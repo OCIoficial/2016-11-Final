@@ -36,3 +36,4 @@ checker
 *.md5
 *.pdf
 *.tar.gz
+__pycache__
