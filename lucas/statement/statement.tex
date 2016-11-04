@@ -1,32 +1,102 @@
 \documentclass{oci}
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
+\usepackage{xcolor}
 
-\title{Ejemplo}
-\codename{ejemplo}
+\title{El flojo de Lucas}
+\codename{lucas}
 
 \begin{document}
 \begin{problemDescription}
-\lipsum[1-3]
+  Lucas siempre ha sido un niño extremadamente flojo.
+  Es tan flojo que a menudo gasta más tiempo en pensar como poder trabajar menos
+  que en realmente hacer sus labores.
+  En este momento a Lucas le encargaron escribir un documento para el colegio.
+  Sentado frente a la pantalla del computador piensa como hacer para no trabajar
+  tanto.
+
+  Después de escribir algunas palabras Lucas se ha dado cuenta que gasta
+  demasiado tiempo en hacer correcciones y podría trabajar menos si lo hiciera
+  de mejor manera.
+  Cuando Lucas corrige una palabra primero selecciona una porción contigua de
+  esta con el mouse y la borra para luego insertar las letras que faltan.
+  A Lucas no le gusta cambiarse mucho entre el teclado y el mouse así que una
+  vez que borra la porción contigua inserta las letras faltantes también de
+  forma contigua desde la posición en que quedó después de borrar.
+  Por ejemplo, si quisiera corregir la palabra \texttt{escribir} y cambiarla por
+  \texttt{exhibir}, Lucas podría eliminar las letras \texttt{scr} y luego
+  insertar \texttt{xh}.
+  A continuación se ilustra los pasos que lucas hace para hacer esta corrección.
+
+  \texttt{escribir}
+
+  \texttt{e\colorbox{gray}{\hspace{-0.24em}scr\hspace{-0.24em}}ibir}
+
+  \texttt{e{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+
+  \texttt{ex{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+
+  \texttt{exh{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+
+  Notar que después de borrar la porción \texttt{scr} de la primera palabra
+  todos los caracteres faltantes deben ingresarse uno tras otro entre la
+  \texttt{e} y la \texttt{i}.
+
+  A Lucas le preocupa seleccionar una porción de la palabra de forma que después
+  de borrarla tenga que insertar la menor cantidad de caracteres posibles.
+  Notar que que la mejor solución podría ser no eliminar ninguna porción de
+  la palabra original o incluso eliminarla por completo.
+
+  Afortunadamente, el programa que está ocupando Lucas puede ser extendido
+  mediante \emph{plug-ins}, pequeños fragmentos de código que permiten a 
+  cualquier usuario añadir nuevas funcionalidades al programa.
+  Claramente Lucas es demasiado flojo para aprender a usar este sistema así que
+  necesita tu ayuda para poder agregar la funcionalidad que le servirá para
+  poder trabajar menos.
+
+  Internamente el programa tiene asociado un entero a cada letra y representa
+  cada palabra con la secuencia de enteros correspondientes a cada letra.
+  Por ejemplo, la palabra \texttt{escribir} es representada con la secuencia
+  $(101,115,99,114,105,98,105,114)$ mientras que la palabra \texttt{exhibir} con
+  la secuencia $(101,120,104,105,98,105,114)$.
+  Dada una secuencia inicial y una final, tu tarea es determinar cuál es la
+  mínima cantidad inserciones contiguas con que es posible transformar la
+  primera en la segunda, después de eliminar una porción contigua de la primera y
+  siguiendo la restricción de que las inserciones deben hacerse en la posición
+  donde se hizo el borrado.
+  Por ejemplo, dadas la secuencia inicial $(101,115,99,114,105,98,105,114)$ y la
+  secuencia final $(101,120,104,105,98,105,114)$, la mínima cantidad de
+  inserciones es $2$ pues se puede eliminar la porción $(115,99,114)$ de la
+  primera y luego insertar $(120,104)$ entre el 101 y el 105.
 \end{problemDescription}
 
 \begin{inputDescription}
-\lipsum[1]
+  La línea está descrita en varias líneas.
+  La primera línea contiene dos enteros $N$ y $M$ ($1\leq N,M \leq 50$)
+  correspondientes a los largos de la secuencia inicial y final respectivamente.
+  La segunda línea contiene $N$ enteros entre 0 y 255 inclusive,
+  correspondientes a la secuencia inicial.
+  La tercera línea contiene $M$ enteros también entre 0 y 255, correspondientes
+  a la secuencia final.
 \end{inputDescription}
 
 \begin{outputDescription}
-\lipsum[1]
+  Debes imprimir un único entero mayor o igual que cero correspondiente a la
+  mínima cantidad de inserciones con que es posible transformar la primera
+  secuencia en la segunda siguiendo las restricciones del problema.
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{10} Restricciones Subtarea1
-  \score{10} Restricciones Subtarea2
-  \score{10} Restricciones Subtarea3
+  \score{20} Se probarán varios casos donde $N \leq M$ y la segunda palabra corresponde a
+  una extensión de la primera, es decir, solo es necesario insertar caracteres
+  al final de la primera palabra para transformarla en la segunda.
+  \score{40} Se probarán varios casos donde $N\leq M$ sin restricciones adicionales.
+  \score{40} Se probarán varios casos donde $M\leq N$ sin restricciones adicionales.
 \end{scoreDescription}
 
 \begin{sampleDescription}
-\sampleIO{sample-1}
-\sampleIO{sample-2}
+% \sampleIO{sample-1}
+% \sampleIO{sample-2}
 \end{sampleDescription}
 
 \end{document}
