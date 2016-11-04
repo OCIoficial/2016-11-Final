@@ -9,18 +9,18 @@
 \begin{document}
 \begin{problemDescription}
   Lucas siempre ha sido un niño extremadamente flojo.
-  Es tan flojo que a menudo gasta más tiempo en pensar como poder trabajar menos
-  que en realmente hacer sus labores.
+  Es tan flojo que a menudo gasta más tiempo en pensar como trabajar menos que
+  en realmente hacer sus labores.
   En este momento a Lucas le encargaron escribir un documento para el colegio.
   Sentado frente a la pantalla del computador piensa como hacer para no trabajar
   tanto.
 
-  Después de escribir algunas palabras Lucas se ha dado cuenta que gasta
-  demasiado tiempo en hacer correcciones y podría trabajar menos si lo hiciera
-  de mejor manera.
-  Cuando Lucas corrige una palabra primero selecciona una porción contigua de
-  esta con el mouse y la borra para luego insertar las letras que faltan.
-  A Lucas no le gusta cambiarse mucho entre el teclado y el mouse así que una
+  Después de escribir algunas palabras, no muchas, Lucas se ha dado cuenta que
+  gasta demasiado tiempo en hacer correcciones, así que podría trabajar menos si
+  lo hiciera de manera más eficiente.
+  Cuando Lucas corrige una palabra primero selecciona con el mouse una porción
+  contigua de esta y la borra.
+  A Lucas le da flojera cambiarse mucho entre el teclado y el mouse así que una
   vez que borra la porción contigua inserta las letras faltantes también de
   forma contigua desde la posición en que quedó después de borrar.
   Por ejemplo, si quisiera corregir la palabra \texttt{escribir} y cambiarla por
@@ -28,23 +28,26 @@
   insertar \texttt{xh}.
   A continuación se ilustra los pasos que lucas hace para hacer esta corrección.
 
-  \texttt{escribir}
+  \newcommand{\caret}{{\color{gray}\hspace{-0.2em}\raisebox{-0.1em}{\scalebox{1.1}{|}}\hspace{-0.24em}}}
+  \begin{center}
+    \texttt{escribir}
 
-  \texttt{e\colorbox{gray}{\hspace{-0.24em}scr\hspace{-0.24em}}ibir}
+    \texttt{e\colorbox{gray}{\hspace{-0.24em}scr\hspace{-0.24em}}ibir}
 
-  \texttt{e{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+    \texttt{e\caret{}ibir}
 
-  \texttt{ex{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+    \texttt{ex\caret{}ibir}
 
-  \texttt{exh{\color{gray}\hspace{-0.2em}|\hspace{-0.24em}}ibir}
+    \texttt{exh\caret{}ibir}
+  \end{center}
 
-  Notar que después de borrar la porción \texttt{scr} de la primera palabra
+  Notar que después de borrar \texttt{scr} de la primera palabra
   todos los caracteres faltantes deben ingresarse uno tras otro entre la
   \texttt{e} y la \texttt{i}.
 
   A Lucas le preocupa seleccionar una porción de la palabra de forma que después
   de borrarla tenga que insertar la menor cantidad de caracteres posibles.
-  Notar que que la mejor solución podría ser no eliminar ninguna porción de
+  Notar que la mejor solución podría consistir en no eliminar ninguna porción de
   la palabra original o incluso eliminarla por completo.
 
   Afortunadamente, el programa que está ocupando Lucas puede ser extendido
@@ -54,16 +57,16 @@
   necesita tu ayuda para poder agregar la funcionalidad que le servirá para
   poder trabajar menos.
 
-  Internamente el programa tiene asociado un entero a cada letra y representa
-  cada palabra con la secuencia de enteros correspondientes a cada letra.
+  Internamente el programa tiene asociado un entero a cada letra, el cuál es
+  llamado el código ASCII.\@
+  Cada palabra es representada con la secuencia de enteros correspondientes a
+  cada letra.
   Por ejemplo, la palabra \texttt{escribir} es representada con la secuencia
   $(101,115,99,114,105,98,105,114)$ mientras que la palabra \texttt{exhibir} con
   la secuencia $(101,120,104,105,98,105,114)$.
   Dada una secuencia inicial y una final, tu tarea es determinar cuál es la
-  mínima cantidad inserciones contiguas con que es posible transformar la
-  primera en la segunda, después de eliminar una porción contigua de la primera y
-  siguiendo la restricción de que las inserciones deben hacerse en la posición
-  donde se hizo el borrado.
+  mínima cantidad inserciones con que es posible transformar la primera en la
+  segunda, siguiendo las restricciones de Lucas.
   Por ejemplo, dadas la secuencia inicial $(101,115,99,114,105,98,105,114)$ y la
   secuencia final $(101,120,104,105,98,105,114)$, la mínima cantidad de
   inserciones es $2$ pues se puede eliminar la porción $(115,99,114)$ de la
@@ -71,13 +74,13 @@
 \end{problemDescription}
 
 \begin{inputDescription}
-  La línea está descrita en varias líneas.
-  La primera línea contiene dos enteros $N$ y $M$ ($1\leq N,M \leq 50$)
+  La primera línea de la entrada contiene dos enteros $N$ y $M$ ($1\leq N,M \leq 50$)
   correspondientes a los largos de la secuencia inicial y final respectivamente.
-  La segunda línea contiene $N$ enteros entre 0 y 255 inclusive,
-  correspondientes a la secuencia inicial.
-  La tercera línea contiene $M$ enteros también entre 0 y 255, correspondientes
+  La segunda línea contiene $N$ enteros entre 0 y 255 inclusive correspondientes
+  a la secuencia inicial.
+  La tercera línea contiene $M$ enteros también entre 0 y 255 correspondientes
   a la secuencia final.
+  Se garantiza que ambas secuencias serán distintas.
 \end{inputDescription}
 
 \begin{outputDescription}
@@ -87,16 +90,18 @@
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{20} Se probarán varios casos donde $N \leq M$ y la segunda palabra corresponde a
-  una extensión de la primera, es decir, solo es necesario insertar caracteres
-  al final de la primera palabra para transformarla en la segunda.
-  \score{40} Se probarán varios casos donde $N\leq M$ sin restricciones adicionales.
-  \score{40} Se probarán varios casos donde $M\leq N$ sin restricciones adicionales.
+  \score{25} Se probarán varios casos donde $N < M$ y la segunda secuencia
+  corresponde a una extensión de la primera, es decir, solo es necesario
+  insertar enteros al final de la primera secuencia para transformarla en la
+  segunda.
+  \score{35} Se probarán varios casos donde $N=M$ sin restricciones adicionales.
+  \score{40} Se probarán varios casos sin restricciones adicionales.
 \end{scoreDescription}
 
 \begin{sampleDescription}
-% \sampleIO{sample-1}
-% \sampleIO{sample-2}
+\sampleIO{sample-1}
+\sampleIO{sample-2}
+\sampleIO{sample-3}
 \end{sampleDescription}
 
 \end{document}
