@@ -2,37 +2,113 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 
-\title{Expansión}
-\codename{expansion}
+\title{Ejército}
+\codename{ejercito}
 
 \begin{document}
 \begin{problemDescription}
-El juego \emph{Ataque} es una variante del juego \emph{Risk}, donde varios
-jugadores se turnan para cumplir su objetivo secreto antes que los demás.
-El tablero consiste en un mapa del mundo donde los continentes están divididos
-en territorios. Durante el juego, cada territorio es controlado por un solo
-jugador a la vez.
-En su turno, cada jugador pasa por 3 fases: nuevos soldados, ataque y
-reordenamiento.
-Al atacar, un jugador solo puede conquistar territorios adyacentes a los
-propios y por dinámica del juego no es posible atacar desde un territorio
-recién conquistado hasta el turno siguiente.
+  En el juego Ataque, los jugadores juegan por turnos intentando cumplir un
+  objetivo secreto, único para cada jugador, antes que los demás jugadores.
+  El tablero consiste en un mapa del mundo donde toda la masa terrestre del
+  planeta está dividida en un número de territorios\footnote{El juego
+  original tiene 42 territorios divididos en 6 continentes.}.
+  Dos territorios son adyacentes si existe una frontera entre ellos o bien si
+  existe una línea punteada que los conecta (esto a través de océanos).
+  Durante el juego, un territorio es controlado por un solo jugador y esto se
+  representa mediante una o más fichas del color del jugador que lo controla.
 
+  Los turnos se dividen en tres etapas.
+  Una de ellas consiste en la fase de ataques, durante la cual el jugador que
+  juega su turno puede realizar una serie de ataques, cada uno desde alguno de
+  sus territorios con 2 fichas o más a un territorio enemigo adyacente.
+  Si el ataque es exitoso, el jugador elimina todas las fichas enemigas en ese
+  territorio y coloca una ficha de su propio color en él.
+  Como los territorios recién conquistados quedan con una ficha, no es posible
+  realizar un ataque desde ellos hasta el turno siguiente (siempre que el
+  jugador se encarga de poner fichas adicionales en ese territorio).
 
+  Hobby, los fabricantes del juego, están interesados en saber cómo cambiaría
+  la dinámica del juego si fuera posible atacar desde los territorios recién
+  conquistados.
+  Para ello, han ideado el siguiente sistema:
+  \begin{enumerate}
+    \item Al empezar cada turno, los territorios del jugador son marcados con
+    un 0.
+    \item Al atacar, cada territorio conquistado es marcado con el número del
+    territorio atacante, más uno.
+    Por ejemplo, si un territorio está marcado con un 4, los territorios
+    conquistados desde él se deben marcar con un 5.
+    \item Un territorio sólo puede atacar si tiene dos fichas o más y además
+    está marcado con un número menor que $M$, donde $M$ es un límite que Hobby
+    quiere definir.
+    Observa que si $M$ es 1, el juego es idéntico al original.
+  \end{enumerate}
+
+  Para evaluar esta dinámica, en Hobby quieren saber cuánto se puede expandir
+  un jugador en un mismo turno.
+  Para ello, te piden que ignores el número de fichas y consideres solamente el
+  hecho de que un territorio puede ser atacado desde un territorio propio
+  marcado con $M$ o menor.
+  Ten en cuenta que un territorio enemigo puede ser adyacente a más de uno de
+  los territorios del jugador en turno y que esto puede afectar el número que
+  será usado para marcarlo.
 \end{problemDescription}
 
 \begin{inputDescription}
-\lipsum[1]
+  La entrada consiste en varias líneas.
+
+  La primera línea consiste en cuatro números $N$, $E$, $M$ y $T$ separados por
+  espacios.
+  $N$ ($1 \le N \le 1000$) es el número de territorios del tablero,
+  $E$ ($1 \le E \le ^{N(N-1)}/_2}$) es el número de pares de territorios
+  adyacentes,
+  $M$ ($1 \le M \le 999$) es el número que Hobby quiere introducir al juego y
+  $T$ ($0 \le T \le N$) es el número de territorios del jugador que se desea
+  evaluar.
+
+  Las siguientes $E$ líneas contienen pares de números separados por espacios.
+  Cada par $u$, $v$ indica que los territorios enumerados $u$ y $v$ son
+  adyacentes.
+  Asume que los territorios están enumerados de 1 a $N$.
+
+  La última línea contiene $T$ enteros separados por espacios, que corresponden
+  a los territorios controlados por el jugador a evaluar.
+
+  Hay varias subtareas, descritas a continuación, que dan cuenta de distintos
+  tipos de tableros:
+
+  \paragraph{Subtarea 1 (30 puntos)} Los territorios están dispuestos en una
+  cadena o línea.
+  Por ejemplo, si $N$ es 5, los territorios estarán dispuestos de la forma
+  A--B--C--D--E, donde `--' indica adyacencia y A, B, C, D y E son números
+  entre 1 y 5.
+
+  \paragraph{Subtarea 2 (30 puntos)} Los territorios están dispuestos como un
+  árbol.
+  Esto significa que entre cada par de territorios, existe un único camino que
+  los conecta.
+  % TODO Quizá no es necesario explicar lo que es un camino
+  Un camino entre $A$ y $B$ es una secuencia de territorios adyacentes que
+  comienza con $A$ y termina con $B$.
+
+  \paragraph{Subtarea 3 (40 puntos)} Los territorios y sus adyacencias pueden
+  tener cualquier forma.
+  
+  % TODO poner una foto o un dibujo vectorial de parte del tablero y explicar--
+  % hacer uno de los samples basado en la figura.
+
 \end{inputDescription}
 
 \begin{outputDescription}
-\lipsum[1]
+  La salida consiste en una única línea con el número $Z$, el máximo número de
+  territorios que puede controlar el jugador a evaluar.
+  Este número incluye los territorios que poseía inicialmente.
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{10} Restricciones Subtarea1
-  \score{10} Restricciones Subtarea2
-  \score{10} Restricciones Subtarea3
+  \score{30} Los territorios forman una línea.
+  \score{30} Los territorios forman un árbol.
+  \score{40} No hay restricciones adicionales.
 \end{scoreDescription}
 
 \begin{sampleDescription}
