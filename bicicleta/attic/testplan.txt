@@ -15,22 +15,62 @@
 
 [Subtask 1]
   # Use sample data as test
-  1 ; copy documents/sample-1.in
-  1 ; copy documents/sample-2.in
-
-  # Manual test case
-  2 ; copy attic/manual-1.in
+  1 ; copy statement/sample-1.in
 
   # Random tests
-  3 ; random.cpp 10 100
-  3 ; random.cpp 100 1000
+  2 ; gen_random.py 2 2 10
+  2 ; gen_random.py 2 3 10
+  2 ; gen_random.py 2 5 10
+  2 ; gen_random.py 2 8 10
+  2 ; gen_random.py 2 13 100
+  2 ; gen_random.py 2 21 100
+  2 ; gen_random.py 2 34 100
+  2 ; gen_random.py 2 55 100
+  2 ; gen_random.py 2 89 100
+  3 ; gen_random.py 2 99 100000
+  3 ; gen_random.py 2 100 100000
 
 
 [Subtask 2]
-  # Random tests
-  1 ; random.java 10 20 30
-  1 ; random.java 20 30 40
+  # Use sample data as test
+  1 ; copy statement/sample-2.in
 
-  # More random tests
-  2 ; random.py 1 1000
+  # Random tests
+  2 ; gen_random.py 3 3 10
+  2 ; gen_random.py 4 9 10
+  2 ; gen_random.py 5 27 100
+  2 ; gen_random.py 6 81 100
+  2 ; gen_random.py 20 3 10
+  2 ; gen_random.py 30 9 100
+  2 ; gen_random.py 40 27 100
+  2 ; gen_random.py 50 81 100
+  2 ; gen_random.py 100 3 100
+  2 ; gen_random.py 200 9 150
+  2 ; gen_random.py 400 27 200
+  2 ; gen_random.py 800 81 500
+  2 ; gen_random.py 1000 100 1000
+  3 ; gen_random.py 999 99 100000
+  3 ; gen_random.py 1000 100 100000
+
+
+[Subtask 3]
+  # Random tests
+  1 ; gen_random.py 1024 1024 100000
+  1 ; gen_random.py 1597 1597 100000
+  1 ; gen_random.py 2048 2048 100000
+  1 ; gen_random.py 2584 2584 100000
+  1 ; gen_random.py 4096 4096 100000
+  1 ; gen_random.py 4181 4181 100000
+  1 ; gen_random.py 6765 6765 100000
+  1 ; gen_random.py 8192 8192 100000
+  1 ; gen_random.py 10000 10000 100000
+  2 ; gen_random.py 2049 1024 1024
+  2 ; gen_random.py 3195 1597 1597
+  2 ; gen_random.py 4097 2048 2048
+  2 ; gen_random.py 5169 2584 2584
+  2 ; gen_random.py 8193 4096 4096
+  2 ; gen_random.py 8363 4181 4181
+  2 ; gen_random.py 10000 8192 8192
+  3 ; gen_random.py 9999 9999 9999
+  3 ; gen_random.py 10000 10000 10000
 
