@@ -8,7 +8,7 @@
 \begin{document}
 
 \begin{problemDescription}
-Ya bien entrada la primavera, la temperatura y el aroma de los parques forman el
+Ya bien entrada la primavera, la temperatura y el aroma primaveral forman el
 ambiente perfecto para los ciclistas, quienes cada tarde llenan los parques para
 disfrutar de paseos en bicicleta.
 
@@ -18,11 +18,11 @@ lo alto de la cordillera, donde no es posible acceder en automóvil.
 % Juan debe cruzar enormes distancias en ella para llegar a su laboratorio en la
 % cordillera, lejos de la ciudad, ya que no hay caminos aptos para automóviles
 % que lleguen a ese lugar.
-Si bien disfruta el paisaje, lo que odia es preocuparse de los \emph{cambios} de
-la bicicleta.
-Como el camino que debe recorrer está entremedio de la cordillera, este cambia
-mucho de pendiente y debe constantemente pasar los cambios para sentirse cómodo
-al pedalear.
+Si bien disfruta el paisaje, lo que odia es preocuparse de pasar los
+\emph{cambios} de la bicicleta.
+Como el camino que debe recorrer atraviesa la cordillera, este cambia
+mucho de pendiente y Juan debe constantemente pasar los cambios para sentirse
+cómodo al pedalear.
 Un cambio más alto significa más esfuerzo, pero a la vez significa mayor
 velocidad.
 Si la pendiente es muy grande, Juan debe pasar a cambios más bajos para no hacer
@@ -33,8 +33,8 @@ más rápido.
 % pedalear muy rápido, y si es muy alto, debe hacer mucho esfuerzo para que la
 % bicicleta se mueva.
 
-Después de estudiar detenidamente el camino, Juan ha determinado con qué cambio
-se siente cómodo para distintas pendientes.
+Después de estudiar detenidamente el camino, Juan ha determinado a partir de que
+pendientes los cambios le parecen lo suficientemente agradables.
 Específicamente, Juan tiene una lista de enteros en orden descendente, donde el
 $i$-ésimo entero indica la pendiente a partir de la cual este cambio es
 suficientemente agradable.
@@ -44,7 +44,7 @@ significa que Juan se siente cómodo con el primer cambio con una pendiente de
 menor y se siente cómodo con el tercero con una pendiente de 10 o menor.
 
 Naturalmente Juan desea ir lo más rápido posible, así que en caso de sentirse
-cómodo con más de un cambio ocupará el más alto.
+cómodo con más de un cambio ocupará siempre el más alto posible.
 Por ejemplo, dada la lista anterior, con una pendiente de 16 Juan se siente cómodo
 tanto con el primer cambio como con el segundo, pero preferirá el segundo por
 ser el más alto.
@@ -61,12 +61,12 @@ ser el más alto.
 % una pendiente por cambio, además de un programa computacional.
 Para evitar lidiar con el problema de pasar los cambios manualmente, Juan ha
 comprado una bicicleta inteligente que puede ser programada para actuar
-automáticamente a las diferencias de pendiente.
+automáticamente frente a las diferencias de pendiente.
 La bicicleta es muy precisa y puedes ser programada para pasar instantáneamente
 a cualquiera de sus cambios.
 
 Para usar la bicicleta es necesario implementar un programa que determine cuál
-es el cambio ideal dada una pendiente.
+es el cambio ideal dada una pendiente y las preferencias de Juan.
 Juan Paul no es muy hábil programando, ¿podrías ayudarlo a implementar el
 programa necesario para usar la bicicleta?.
 
@@ -93,6 +93,7 @@ este cambio es suficientemente agradable.
 
 La última línea contiene $F$ enteros $m_j$ ($-10^5\leq m_i\leq 10^5$), donde
 $m_j$ indica la pendiente del terreno en un instante dado.
+Una pendiente negativa significa que el camino va en bajada.
 Se garantiza que al menos el primer cambio es suficientemente agradable para
 Juan en todo instante.
 \end{inputDescription}
@@ -105,7 +106,7 @@ para la pendiente $m_j$.
 
 \begin{scoreDescription}
   \score{16} Se probarán varios casos con $N=2$ y $F\leq 1\,000$.
-  \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $F\leq 1\,000$.
+  \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $F\leq 100$.
   \score{46} Se probarán varios casos con $1\,000< N \leq 10\,000$ y $1\,000 <
   F\leq 10\,000$.
 \end{scoreDescription}

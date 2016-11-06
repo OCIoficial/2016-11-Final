@@ -2,118 +2,100 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 
-\title{Ejército}
-\codename{ejercito}
+\title{Territorios}
+\codename{territorios}
 
 \begin{document}
 \begin{problemDescription}
-  En el juego Ataque, los jugadores juegan por turnos intentando cumplir un
-  objetivo secreto, único para cada jugador, antes que los demás jugadores.
-  El tablero consiste en un mapa del mundo donde toda la masa terrestre del
-  planeta está dividida en un número de territorios\footnote{El juego
-  original tiene 42 territorios divididos en 6 continentes.}.
-  Dos territorios son adyacentes si existe una frontera entre ellos o bien si
-  existe una línea punteada que los conecta (esto a través de océanos).
-  Durante el juego, un territorio es controlado por un solo jugador y esto se
-  representa mediante una o más fichas del color del jugador que lo controla.
+  Terry es fanática del Risk.
+  Risk es un popular juego de estrategia, cuyo objetivo es completar una misión
+  secreta dada a cada jugador conquistando los \emph{territorios} enemigos.
+  No lo confundan con imitaciones, Risk es el original y único juego de
+  estrategia en el que puedes conquistar el mundo.
 
-  Los turnos se dividen en tres etapas.
-  Una de ellas consiste en la fase de ataques, durante la cual el jugador que
-  juega su turno puede realizar una serie de ataques, cada uno desde alguno de
-  sus territorios con 2 fichas o más a un territorio enemigo adyacente.
-  Si el ataque es exitoso, el jugador elimina todas las fichas enemigas en ese
-  territorio y coloca una ficha de su propio color en él.
-  Como los territorios recién conquistados quedan con una ficha, no es posible
-  realizar un ataque desde ellos hasta el turno siguiente (siempre que el
-  jugador se encarga de poner fichas adicionales en ese territorio).
+  El tablero del juego consiste en un mapa del mundo donde los continentes están
+  divididos en territorios.
+  Dos territorios son adyacentes si existe una frontera entre ellos o si hay una
+  línea punteada que los une lo que significa que es posible navegar entre ellos
+  a través del océano.
+  Durante el juego, un territorio es controlado por a lo más un jugador a la vez
+  y esto se representa poniendo una o más fichas del color del jugador que lo
+  controla sobre el territorio. 
 
-  Hobby, los fabricantes del juego, están interesados en saber cómo cambiaría
-  la dinámica del juego si fuera posible atacar desde los territorios recién
-  conquistados.
-  Para ello, han ideado el siguiente sistema:
-  \begin{enumerate}
-    \item Al empezar cada turno, los territorios del jugador son marcados con
-    un 0.
-    \item Al atacar, cada territorio conquistado es marcado con el número del
-    territorio atacante, más uno.
-    Por ejemplo, si un territorio está marcado con un 4, los territorios
-    conquistados desde él se deben marcar con un 5.
-    \item Un territorio sólo puede atacar si tiene dos fichas o más y además
-    está marcado con un número menor que $M$, donde $M$ es un límite que Hobby
-    quiere definir.
-    Observa que si $M$ es 1, el juego es idéntico al original.
-  \end{enumerate}
+  En cada turno un jugador puede decidir atacar los territorios enemigos
+  para intentar conquistarlos.
+  Para realizar un ataque un jugador debe escoger uno de sus territorios y
+  atacar algún territorio enemigo adyacente a él.
+  Si el ataque es exitoso, el jugador atacante elimina todas las fichas enemigas
+  del territorio y puede colocar algunas de las suyas en este nuevo territorio
+  conquistado.
+  Una vez que un territorio es conquistado el jugador debe esperar al siguiente
+  turno para poder atacar desde él.
+  No obstante, puede seguir atacando desde los territorios que ya poseía.
 
-  Para evaluar esta dinámica, en Hobby quieren saber cuánto se puede expandir
-  un jugador en un mismo turno.
-  Para ello, te piden que ignores el número de fichas y consideres solamente el
-  hecho de que un territorio puede ser atacado desde un territorio propio
-  marcado con $M$ o menor.
-  Ten en cuenta que un territorio enemigo puede ser adyacente a más de uno de
-  los territorios del jugador en turno y que esto puede afectar el número que
-  será usado para marcarlo.
+  Terry está obsesionada con el Risk y a menudo pasa tardes enteras analizando
+  nuevas estrategias.
+  En este comento está preocupada de saber cuantos territorios podría
+  conquistar como máximo luego de $K$ turnos.
+  Terry comienza el juego con una cantidad $T$ de territorios.
+  En el primer turno Terry puede conquistar todos los territorios adyacentes a
+  alguno de estos $T$ territorios.
+  En el segundo turno puede atacar desde los territorios conquistados en
+  el primer turno y conquistar todos los territorios adyacentes a alguno de
+  estos.
+  Luego, en el tercer turno puede expandirse a partir de los territorios
+  conquistados en el segundo turno y así sucesivamente hasta completar $K$
+  turnos.
+  Suponiendo que entremedio no pierde ningún territorio y además que en cada
+  turno conquista todos los territorios posibles, a Terry le gustaría saber con
+  cuantos territorios termina después del turno $K$.
 \end{problemDescription}
 
 \begin{inputDescription}
   La entrada consiste en varias líneas.
 
-  La primera línea consiste en cuatro números $N$, $E$, $M$ y $T$ separados por
-  espacios.
-  $N$ ($1 \le N \le 1000$) es el número de territorios del tablero,
-  $E$ ($1 \le E \le ^{N(N-1)}/_2}$) es el número de pares de territorios
+  La primera línea consiste en dos números $N$, $E$, $K$ y $T$.
+  $N$ ($1 \le N \le 1\,000$) es el número de territorios en el tablero,
+  $E$ ($1 \le E \le 10\,000$) es la cantidad de pares de territorios
   adyacentes,
-  $M$ ($1 \le M \le 999$) es el número que Hobby quiere introducir al juego y
-  $T$ ($0 \le T \le N$) es el número de territorios del jugador que se desea
-  evaluar.
+  $K$ ($1 \le M \le 999$) es el número turnos que Terry quiere evaluar y
+  $T$ es el número de territorios con el cual Terry comienza
+  el juego.
+  Cada territorio es identificado con un número entre 1 y $N$.
 
-  Las siguientes $E$ líneas contienen pares de números separados por espacios.
-  Cada par $u$, $v$ indica que los territorios enumerados $u$ y $v$ son
-  adyacentes.
-  Asume que los territorios están enumerados de 1 a $N$.
+  Las siguientes $E$ líneas describen pares de territorios adyacentes.
+  Cada línea contiene un par de enteros distintos $u$ y $v$ ($1\leq u,v\leq N$),
+  indicando que el territorio $u$ es adyacente al $v$.
 
-  La última línea contiene $T$ enteros separados por espacios, que corresponden
-  a los territorios controlados por el jugador a evaluar.
+  La última línea contiene $T$ enteros, que corresponden a los territorios
+  controlados por Terry al principio del juego.
 
-  Hay varias subtareas, descritas a continuación, que dan cuenta de distintos
-  tipos de tableros:
-
-  \paragraph{Subtarea 1 (30 puntos)} Los territorios están dispuestos en una
-  cadena o línea.
-  Por ejemplo, si $N$ es 5, los territorios estarán dispuestos de la forma
-  A--B--C--D--E, donde `--' indica adyacencia y A, B, C, D y E son números
-  entre 1 y 5.
-
-  \paragraph{Subtarea 2 (30 puntos)} Los territorios están dispuestos como un
-  árbol.
-  Esto significa que entre cada par de territorios, existe un único camino que
-  los conecta.
-  % TODO Quizá no es necesario explicar lo que es un camino
-  Un camino entre $A$ y $B$ es una secuencia de territorios adyacentes que
-  comienza con $A$ y termina con $B$.
-
-  \paragraph{Subtarea 3 (40 puntos)} Los territorios y sus adyacencias pueden
-  tener cualquier forma.
-  
   % TODO poner una foto o un dibujo vectorial de parte del tablero y explicar--
   % hacer uno de los samples basado en la figura.
-
 \end{inputDescription}
 
 \begin{outputDescription}
-  La salida consiste en una única línea con el número $Z$, el máximo número de
-  territorios que puede controlar el jugador a evaluar.
-  Este número incluye los territorios que poseía inicialmente.
+  La salida consiste en una única línea con un número indicando la cantidad
+  máxima de territorios que puede controlar Terry después de $K$ turnos.
+  Notar que este número incluye los territorios que poseía al inicio del juego.
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{30} Los territorios forman una línea.
-  \score{30} Los territorios forman un árbol.
-  \score{40} No hay restricciones adicionales.
+  \score{30} Se probarán varios casos donde $T=1$, y además los
+  territorios están dispuestos en una cadena, es decir, el territorio $i$
+  es adyacente solo con el territorio $i-1$ y el $i+1$, salvo el primer
+  territorio que solo es adyacente con el segundo y el último que solo es
+  adyacente con el penúltimo (como en el primer caso de ejemplo más abajo).
+  \score{30} Se probarán varios casos donde $T=1$ y sin
+  restricciones adicionales.
+  \score{40} Se probarán varios casos donde $T\leq N$ y sin restricciones
+  adicionales.
 \end{scoreDescription}
 
 \begin{sampleDescription}
 \sampleIO{sample-1}
 \sampleIO{sample-2}
+\sampleIO{sample-3}
 \end{sampleDescription}
 
 \end{document}
