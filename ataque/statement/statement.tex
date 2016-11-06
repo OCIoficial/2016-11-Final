@@ -2,6 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 \usepackage{tikz}
+\usepackage{amssymb}
+
+\newcommand{\gana}{} %$\checkmark$}
+\newcommand{\pierde}{$\times$}
 
 \title{Dados al ataque}
 \codename{ataque}
@@ -17,9 +21,11 @@
   Para poder atacar al enemigo, un jugador debe lanzar una cierta cantidad de
   dados de acuerdo al número de \emph{ejércitos} que este posea.
   El jugador defensor deberá lanzar la misma cantidad.
-  Para saber el resultado del ataque tanto los dados del jugador atacante como
-  los del defensor se ordenan de mayor a menor.
-  Luego, el mayor dado del atacante es comparado con el mayor dado del defensor.
+%  Para saber el resultado del ataque tanto los dados del jugador atacante como
+%  los del defensor se ordenan de mayor a menor.
+%  Luego, el mayor dado del atacante es comparado con el mayor dado del defensor.
+  Para saber el resultado del ataque se hace lo siguiente.
+  Primero, el mayor dado del atacante es comparado con el mayor dado del defensor.
   El jugador con el peor puntaje entre ambos dados perderá un ejército.
   En caso de haber empate el jugador defensor es quien sale victorioso y el
   atacante pierde un ejército.
@@ -28,17 +34,9 @@
   obtenido peor puntaje (resolviendo los empates en favor del defensor).
   Se continúa de esta forma hasta haber comparado todos los pares de dados.
   
-  La figura de más abajo muestra un ejemplo donde cada jugador ha lanzado tres
-  dados.
-  En el ejemplo, el jugador atacante obtuvo un 6 en su dado con mayor puntaje,
-  mientras que el defensor un 3, por lo tanto el atacante sale victorioso y el
-  defensor pierde un ejército.
-  En el siguiente par de dados ambos jugadores obtuvieron el mismo puntaje y por
-  lo tanto el defensor sale victorioso y el atacante pierde un ejército.
-  Finalmente, en el último par de dados el defensor obtiene mejor puntaje y por
-  lo tanto el atacante pierde un ejército.
-  En total el jugador atacante pierde 2 ejércitos, mientras que el defensor solo
-  pierde 1.
+  La siguiente figura muestra un ejemplo donde cada jugador ha lanzado tres
+  dados. La primera línea corresponde a los dados del atacante, la segunda a los dados del defensor.
+  Se ha marcado con ``\pierde'' quien pierde un ejercito en cada caso.
   \begin{center}
   \begin{tikzpicture}[scale=.9]
   \def\one{+(0.00,0.00) circle [radius=0.08]}
@@ -69,52 +67,73 @@
   % \draw (0, 0) \dice; \fill[rotate around={90:(0,0)}] (0, 0) \six;
   \draw (0, 0) \dice; \fill (0, 0) \six;
   \draw (2, 0) \dice; \fill (2, 0) \thr;
-  \draw (4, 0) \dice; \fill (4, 0) \one;
+  \draw (4, 0) \dice; \fill (4, 0) \two;
 
 
   \node at (-2, -1.5) {defensor};
-  \draw (0, -1.5) \dice; \fill (0, -1.5) \thr;
-  \draw (2, -1.5) \dice; \fill (2, -1.5) \thr;
+  \draw (0, -1.5) \dice; \fill (0, -1.5) \fiv;
+  \draw (2, -1.5) \dice; \fill (2, -1.5) \fiv;
   \draw (4, -1.5) \dice; \fill (4, -1.5) \two;
   
-  \node at (0, 1) {gana};
-  \node at (0, -2.5) {pierde};
+  \node at (0, 1) {\gana};
+  \node at (0, -2.5) {\pierde};
 
-  \node at (2, 1) {pierde};
-  \node at (2, -2.5) {gana};
+  \node at (2, 1) {\pierde};
+  \node at (2, -2.5) {\gana};
 
-  \node at (2, 1) {pierde};
-  \node at (2, -2.5) {gana};
+  \node at (2, 1) {\pierde};
+  \node at (2, -2.5) {\gana};
 
-  \node at (4, 1) {pierde};
-  \node at (4, -2.5) {gana};
+  \node at (4, 1) {\pierde};
+  \node at (4, -2.5) {\gana};
   \end{tikzpicture}
   \end{center}
+ 
+  En el ejemplo, el atacante obtuvo un 6 en su dado con mayor puntaje
+  mientras que el defensor un 5, por lo tanto el atacante sale victorioso y el
+  defensor pierde un ejército.
+  El segundo mayor dado del atacante es un 3 mientras que el segundo mayor dado del defensor
+  es un 5 por lo que el
+  defensor sale victorioso y el atacante pierde un ejercito en este caso.
+  Finalmente, en el último par de dados ambos obtienen el mismo puntaje y por lo tanto
+  el atacante pierde un ejército.
+%  En el siguiente par de dados ambos jugadores obtuvieron el mismo puntaje y por
+%  lo tanto el defensor sale victorioso y el atacante pierde un ejército.
+%  Finalmente, en el último par de dados el defensor obtiene mejor puntaje y por
+%  lo tanto el atacante pierde un ejército.
+  En total el atacante pierde 2 ejércitos, mientras que el defensor sólo
+  pierde 1.
 
-  Debido a su gran popularidad, Hobby está desarrollando una versión electrónica
+  Debido a su gran popularidad, Hobby está creando una versión electrónica
   del Ataque.
-  Lamentablemente están teniendo problemas para implementar el módulo encargado
+  Lamentablemente está teniendo problemas para implementar el módulo encargado
   de la comparación de los dados.
   Después de todo es una empresa de juegos de mesa y no de programación.
-  ?`Podrías ayudarlos?
-
+  >Podrías ayudarlos?
+\newpage
 \end{problemDescription}
 
 \begin{inputDescription}
-  La entrada consiste en varias líneas.
-  La primera contiene un entero $N$ correspondiente a la cantidad de
+%  La entrada consiste en varias líneas.
+  La primera línea de la entrada contiene un entero $N$ correspondiente a la cantidad de
   dados lanzados por cada jugador.
-  La segunda línea describe los dados lanzados por el jugador
-  atacante y contiene $N$ enteros entre 1 y 6 ordenados de mayor a menor.
-  Finalmente, la última línea describe los dados lanzados por el jugador defensor de
-  la misma forma.
+  La siguiente línea contiene dos enteros $A$ y $D$,
+  siendo $A$ el mayor dado del atacante y $D$ el mayor dado del defensor.
+  La siguiente línea contiene el segundo mayor dado del atacante y el segundo mayor
+  dado del defensor, y así sucesivamente hasta completar $N$ líneas.  
+%  La siguiente línea contiene el segundo mayor dado del atacante y el segundo mayor
+%  dado del defensor, la siguiente línea el tercer mayor dado del atacante y el tercer
+%  mayor dado del defensor, y así sucesivamente hasta completar $N$ líneas.  
+%  La segunda línea describe los dados lanzados por el jugador
+%  atacante y contiene $N$ enteros entre 1 y 6 ordenados de mayor a menor.
+%  Finalmente, la última línea describe los dados lanzados por el jugador defensor de
+%  la misma forma.
 \end{inputDescription}
 
 \begin{outputDescription}
-  La salida debe consistir en una única línea con dos enteros $A$ y $D$.
-  El entero $A$ debe indicar la cantidad total de ejércitos que perdió el
-  jugador atacante y $D$ la cantidad de ejércitos que perdió el jugador
-  defensor.
+  La salida debe consistir en una única línea con dos enteros $X$ e $Y$ separados por un espacio.
+  $X$ debe indicar la cantidad total de ejércitos que perdió el
+  atacante e $Y$ la cantidad de ejércitos que perdió el defensor.
 \end{outputDescription}
 
 \begin{scoreDescription}
@@ -125,6 +144,7 @@
 \begin{sampleDescription}
 \sampleIO{sample-1}
 \sampleIO{sample-2}
+\sampleIO{sample-3}
 \end{sampleDescription}
 
 \end{document}

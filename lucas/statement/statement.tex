@@ -9,99 +9,152 @@
 \begin{document}
 \begin{problemDescription}
   Lucas siempre ha sido un niño extremadamente flojo.
-  Es tan flojo que a menudo gasta más tiempo en pensar como trabajar menos que
-  en realmente hacer sus labores.
-  En este momento a Lucas le encargaron escribir un documento para el colegio.
-  Sentado frente a la pantalla del computador piensa como hacer para no trabajar
+  Es tan flojo que en vez de usar el tiempo haciendo sus tareas, gasta más tiempo 
+  pensando cómo hacer el mínimo esfuerzo para realizarlas.
+  A Lucas le encargaron escribir un documento para el colegio y 
+  sentado frente al computador piensa cómo hacer para no trabajar
   tanto.
 
-  Después de escribir algunas palabras, no muchas, Lucas se ha dado cuenta que
-  gasta demasiado tiempo en hacer correcciones, así que podría trabajar menos si
-  lo hiciera de manera más eficiente.
+  Después de escribir algunas palabras, %no muchas, 
+  Lucas se ha dado cuenta de que   %gasta demasiado 
+  usa mucho tiempo en hacer correcciones, así que podría trabajar menos si
+  corrigiera las palabras de manera más eficiente.
   Cuando Lucas corrige una palabra primero selecciona con el mouse una porción
-  contigua de esta y la borra.
-  A Lucas le da flojera cambiarse mucho entre el teclado y el mouse así que una
-  vez que borra la porción contigua inserta las letras faltantes también de
-  forma contigua desde la posición en que quedó después de borrar.
-  Por ejemplo, si quisiera corregir la palabra \texttt{escribir} y cambiarla por
-  \texttt{exhibir}, Lucas podría eliminar las letras \texttt{scr} y luego
-  insertar \texttt{xh}.
-  A continuación se ilustra los pasos que lucas hace para hacer esta corrección.
+  % contigua de esta 
+  de la palabra y la borra. Como es flojo (creo que eso ya lo mencionamos), Lucas
+  siempre elige una única porción para borrar.
+%  A Lucas le da flojera cambiarse mucho entre el teclado y el mouse así que una
+%  vez que borra la porción contigua inserta las letras faltantes también de
+%  forma contigua desde la posición en que quedó después de borrar.
+  Una vez que borra la porción seleccionada inserta las nuevas letras una a una
+  desde la posición en que quedó el cursor. % después de borrar.
+%  Por ejemplo, si quisiera corregir la palabra \texttt{escribiendo} y cambiarla por
+%  \texttt{existiendo}, Lucas podría eliminar las letras \texttt{scrib} y luego
+%  insertar \texttt{xist}.
+%  A continuación se ilustra una posible forma en que Lucas puede hacer esta corrección.
+  Por ejemplo, para corregir la palabra \texttt{escribiendo} y cambiarla por
+  \texttt{existiendo}, podría hacerlo como se muestra a continuación.
 
   \newcommand{\caret}{{\color{gray}\hspace{-0.2em}\raisebox{-0.1em}{\scalebox{1.1}{|}}\hspace{-0.24em}}}
   \begin{center}
-    \texttt{escribir}
+  \begin{minipage}{100pt}
+    \texttt{escribiendo}
 
-    \texttt{e\colorbox{gray}{\hspace{-0.24em}scr\hspace{-0.24em}}ibir}
+    \texttt{e\colorbox{gray}{\hspace{-0.24em}scrib\hspace{-0.24em}}iendo}
 
-    \texttt{e\caret{}ibir}
+    \texttt{e\caret{}iendo}
 
-    \texttt{ex\caret{}ibir}
+    \texttt{ex\caret{}iendo}
 
-    \texttt{exh\caret{}ibir}
+    \texttt{exi\caret{}iendo}
+    
+    \texttt{exis\caret{}iendo}
+
+    \texttt{exist\caret{}iendo}    
+  \end{minipage}
   \end{center}
 
-  Notar que después de borrar \texttt{scr} de la primera palabra
-  todos los caracteres faltantes deben ingresarse uno tras otro entre la
-  \texttt{e} y la \texttt{i}.
+  Es decir, Lucas primero selecciona y elimina \texttt{scrib}, y luego, desde donde quedó el cursor,
+  inserta las letras \texttt{x}, \texttt{i}, \texttt{s}, y \texttt{t} una a una.
+  Esta no es la única forma en que Lucas podría haber corregido la palabra.
+  Podría también haber borrado la porción \texttt{scribien} y luego insertado
+  \texttt{xistien}. Sin embargo, en este caso debería haber insertado 7 letras, mientras
+  que de la forma anterior sólo tuvo que insertar $4$.
+%  Notar que después de borrar \texttt{scrib} de la primera palabra
+%  todos los caracteres faltantes deben ingresarse uno tras otro entre la
+%  \texttt{e} y la \texttt{i}.
+  Dado que borrar no cuesta nada, todo el trabajo se gasta insertando las nuevas letras y,
+  obviamente, Lucas quiere insertar la menor cantidad de letras posibles.
+%  Notar que la mejor solución podría consistir en no eliminar ninguna porción de
+%  la palabra original o incluso eliminarla por completo.
 
-  A Lucas le preocupa seleccionar una porción de la palabra de forma que después
-  de borrarla tenga que insertar la menor cantidad de caracteres posibles.
-  Notar que la mejor solución podría consistir en no eliminar ninguna porción de
-  la palabra original o incluso eliminarla por completo.
+	Tu tarea es escribir un programa que ayude a Lucas corrigiendo palabras.
+	% de la manera 	descrita arriba.
+	En particular, dadas dos palabras, tu tarea es calcular la cantidad mínima de letras
+	que Lucas debe insertar para convertir la primera palabra en la segunda a partir de
+	borrar una única porción de la primera e insertar nuevas letras exactamente en el lugar donde las borró.
+	Por ejemplo, para el caso de las palabras \texttt{escribiendo} y \texttt{existiendo}, la respuesta
+	de tu programa debiera ser $4$.
+	
+	Nota que existen casos en donde no es necesario borrar letras de la primera palabra. 
+	Por ejemplo para corregir $\texttt{tomar}$ y convertirla en $\texttt{retomar}$,
+	sólo es necesario insertar \texttt{r} y \texttt{e} al principio. En este caso la respuesta sería $2$.
+	Por otro lado, en un caso extremo 
+	se podría tener que borrar la palabra completa para luego insertar todas las letras.
+	Por ejemplo, en el caso de corregir la palabra $\texttt{gorro}$ para convertirla en $\texttt{ahorrar}$,
+	dado que sólo se puede borrar una única porción de la palabra inicial,
+	la única opción sería borrar la palabra $\texttt{gorro}$ completa e insertar las $7$ letras de la palabra 
+	$\texttt{ahorrar}$.
+	
+%  Afortunadamente, el programa que está ocupando Lucas puede ser extendido
+%  mediante \emph{plug-ins}, pequeños fragmentos de código que permiten a 
+%  cualquier usuario añadir nuevas funcionalidades al programa.
+%  Claramente Lucas es demasiado flojo para aprender a usar este sistema así que
+%  necesita tu ayuda para poder agregar la funcionalidad que le servirá para
+%  poder trabajar menos.
 
-  Afortunadamente, el programa que está ocupando Lucas puede ser extendido
-  mediante \emph{plug-ins}, pequeños fragmentos de código que permiten a 
-  cualquier usuario añadir nuevas funcionalidades al programa.
-  Claramente Lucas es demasiado flojo para aprender a usar este sistema así que
-  necesita tu ayuda para poder agregar la funcionalidad que le servirá para
-  poder trabajar menos.
-
-  Internamente el programa tiene asociado un entero a cada letra, el cuál es
-  llamado el código ASCII.\@
-  Cada palabra es representada con la secuencia de enteros correspondientes a
-  cada letra.
-  Por ejemplo, la palabra \texttt{escribir} es representada con la secuencia
-  $(101,115,99,114,105,98,105,114)$ mientras que la palabra \texttt{exhibir} con
-  la secuencia $(101,120,104,105,98,105,114)$.
-  Dada una secuencia inicial y una final, tu tarea es determinar cuál es la
-  mínima cantidad inserciones con que es posible transformar la primera en la
-  segunda, siguiendo las restricciones de Lucas.
-  Por ejemplo, dadas la secuencia inicial $(101,115,99,114,105,98,105,114)$ y la
-  secuencia final $(101,120,104,105,98,105,114)$, la mínima cantidad de
-  inserciones es $2$ pues se puede eliminar la porción $(115,99,114)$ de la
-  primera y luego insertar $(120,104)$ entre el 101 y el 105.
+	Para la entrada de tu programa representaremos cada letra con un 
+	número entero (llamado código ASCII) 
+	y, por lo tanto,
+%  Internamente el programa tiene asociado un entero a cada letra, el cuál es
+%  llamado el código ASCII.\@
+  cada palabra es representada como una secuencia de enteros.
+  Por ejemplo, la palabra \texttt{escribiendo} es representada con la secuencia de enteros
+  \[
+  101\;\;\; 115\;\;\; 99\;\;\; 114\;\;\; 105\;\;\; 98\;\;\; 105\;\;\; 101\;\;\; 110\;\;\; 100\;\;\; 111
+  \]
+	mientras que la palabra \texttt{existiendo} es representada con la secuencia de enteros
+	\[ 
+	101\;\;\; 120\;\;\; 105\;\;\; 115\;\;\; 116\;\;\; 105\;\;\; 101\;\;\; 110\;\;\; 100\;\;\; 111%\;\;\;\phantom{99}
+	\]
+	Si desde la primera secuencia borramos $115$, $99$, $114$, $105$, $98$ (correspondientes a \texttt{scrib})
+	e insertamos en su lugar a $120$, $105$, $115$, y $116$ 
+	(correspondientes a \texttt{x}, \texttt{i}, \texttt{s}, y \texttt{t}) obtenemos la segunda secuencia.
+%  Dada una secuencia inicial y una final, tu tarea es determinar cuál es la
+%  mínima cantidad inserciones con que es posible transformar la primera en la
+%  segunda, siguiendo las restricciones de Lucas.
+%  Por ejemplo, dadas la secuencia inicial $(101,115,99,114,105,98,105,114)$ y la
+%  secuencia final $(101,120,104,105,98,105,114)$, la mínima cantidad de
+%  inserciones es $2$ pues se puede eliminar la porción $(115,99,114)$ de la
+%  primera y luego insertar $(120,104)$ entre el 101 y el 105.
 \end{problemDescription}
 
 \begin{inputDescription}
-  La primera línea de la entrada contiene dos enteros $N$ y $M$ ($1\leq N,M \leq 50$)
-  correspondientes a los largos de la secuencia inicial y final respectivamente.
-  La segunda línea contiene $N$ enteros entre 0 y 255 inclusive correspondientes
-  a la secuencia inicial.
-  La tercera línea contiene $M$ enteros también entre 0 y 255 correspondientes
-  a la secuencia final.
-  Se garantiza que ambas secuencias serán distintas.
+	La entrada contiene tres líneas.
+  La primera línea contiene dos enteros $N$ y $M$ ($1\leq N,M \leq 50$)
+  correspondientes a los largos de la primera y la segunda palabra.
+  La siguiente línea contiene una secuencia de $N$ enteros que representan a las letras de la primera palabra.
+  La tercera línea contiene una secuencia de $M$ enteros que representan a las letras de la segunda palabra.
+  Se garantiza que ambas secuencias serán distintas y todos los enteros de las secuencias
+  serán números entre $0$ y $255$ inclusive.
 \end{inputDescription}
 
 \begin{outputDescription}
-  Debes imprimir un único entero mayor o igual que cero correspondiente a la
-  mínima cantidad de inserciones con que es posible transformar la primera
-  secuencia en la segunda siguiendo las restricciones del problema.
+%  Debes imprimir un único entero mayor que cero correspondiente a la
+%  mínima cantidad de inserciones con que es posible transformar la primera
+%  secuencia en la segunda siguiendo las restricciones del problema.
+%  
+  Debes imprimir un único entero correspondiente a la
+  mínima cantidad de letras que Lucas debe insertar para corregir la primera palabra y convertirla en la segunda 
+  siguiendo la descripción del problema.
+  %a partir de
+	%borrar una única porción de la primera e insertar nuevas letras exactamente en el lugar donde las borró.
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{25} Se probarán varios casos donde $N < M$ y la segunda secuencia
-  corresponde a una extensión de la primera, es decir, solo es necesario
-  insertar enteros al final de la primera secuencia para transformarla en la
-  segunda.
+  \score{10} Se probarán varios casos donde $N > M$ y la primera palabra 
+  corresponde a una extensión de la segunda palabra (como en el primer caso de los ejemplos de abajo).
+  \score{15} Se probarán varios casos donde $N < M$ y la segunda secuencia 
+  corresponde a una extensión de la primera (como en el segundo caso de los ejemplos de abajo).
   \score{35} Se probarán varios casos donde $N=M$ sin restricciones adicionales.
   \score{40} Se probarán varios casos sin restricciones adicionales.
 \end{scoreDescription}
 
 \begin{sampleDescription}
-\sampleIO{sample-1}
-\sampleIO{sample-2}
-\sampleIO{sample-3}
+\sampleIOc{sample-1}{0.60}{0.30}
+\sampleIOc{sample-2}{0.60}{0.30}
+\sampleIOc{sample-3}{0.60}{0.30}
+\sampleIOc{sample-4}{0.60}{0.30}
 \end{sampleDescription}
 
 \end{document}

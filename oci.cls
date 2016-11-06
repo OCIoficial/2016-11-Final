@@ -148,6 +148,36 @@
 }
 
 
+\newcommand{\sampleIOc}[3]{%
+  \begin{minipage}[c]{\textwidth}
+    \begin{center}
+      \begin{tabu}{|l|} 
+        \taburulecolor{samplegray}
+        \hline
+        \begin{minipage}[t]{#2\textwidth}
+            \vskip 0.3pt
+            \bf{Entrada de ejemplo}
+            \vskip 12pt
+\verbatiminput{#1.in}
+            \vskip 4pt
+        \end{minipage}
+        \begin{minipage}[t]{#3\textwidth}
+            \vskip 0.3pt
+            \bf{Salida de ejemplo}
+            \vskip 12pt
+\verbatiminput{#1.sol}
+            \vskip 4pt
+        \end{minipage}
+        \\
+        \hline
+      \end{tabu}
+    \end{center}
+  \end{minipage}
+  \vskip 12pt
+}
+
+
+
 \newenvironment{scoreDescription}{\subsection*{Subtareas y puntaje}\begin{description}[leftmargin=0pt]\itemsep 0pt}{\end{description}}
 \newcommand{\score}[1]{\item[#1 puntos]}
 
