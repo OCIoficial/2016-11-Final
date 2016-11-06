@@ -18,16 +18,16 @@
   1 ; copy statement/sample-1.in
 
   # Tie
-  2 ; copy attic/manual/tie-1.in
-  2 ; copy attic/manual/tie-2.in
+  2 ; single.py 4 4
+  2 ; single.py 5 5
 
   # Attacker
-  3 ; copy attic/manual/attacker-1.in
-  3 ; copy attic/manual/attacker-2.in
+  3 ; single.py 5 4
+  3 ; single.py 6 1
 
   # Defender
-  4 ; copy attic/manual/defender-1.in
-  4 ; copy attic/manual/defender-2.in
+  4 ; single.py 4 5
+  4 ; single.py 2 6
 
 [Subtask 2]
   # Use sample data as test
@@ -42,6 +42,3 @@
   2 ; gen-random.py 4
   2 ; gen-random.py 5
   2 ; gen-random.py 5
-  2 ; gen-random.py 6
-  2 ; gen-random.py 6
-
