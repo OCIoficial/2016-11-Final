@@ -8,71 +8,106 @@
 \begin{document}
 
 \begin{problemDescription}
-Ya bien entrada la primavera, la temperatura y el aroma de los parques es 
-perfecto para los ciclistas, quienes cada tarde llenan los parques para
+Ya bien entrada la primavera, la temperatura y el aroma de los parques forman el
+ambiente perfecto para los ciclistas, quienes cada tarde llenan los parques para
 disfrutar de paseos en bicicleta.
 
-Juan Paul no es uno de ellos; detesta andar en bicicleta.
-Juan debe cruzar enormes distancias en ella para llegar a su laboratorio en la
-cordillera, lejos de la ciudad, ya que no hay caminos aptos para automóviles
-que lleguen a ese lugar.
-Si bien disfruta los paisajes, lo que odia realmente es preocuparse de los
-cambios, si es muy bajo, debe pedalear muy rápido, y si es muy alto, debe hacer
-mucho esfuerzo para que la bicicleta se mueva.
+Juan Paul no es uno de ellos; él detesta andar en bicicleta.
+Todos los días Juan debe recorrer grandes distancias para llegar a su trabajo en
+lo alto de la cordillera, donde no es posible acceder en automóvil.
+% Juan debe cruzar enormes distancias en ella para llegar a su laboratorio en la
+% cordillera, lejos de la ciudad, ya que no hay caminos aptos para automóviles
+% que lleguen a ese lugar.
+Si bien disfruta el paisaje, lo que odia es preocuparse de los \emph{cambios} de
+la bicicleta.
+Como el camino que debe recorrer está entremedio de la cordillera, este cambia
+mucho de pendiente y debe constantemente pasar los cambios para sentirse cómodo
+al pedalear.
+Un cambio más alto significa más esfuerzo, pero a la vez significa mayor
+velocidad.
+Si la pendiente es muy grande, Juan debe pasar a cambios más bajos para no hacer
+tanto esfuerzo al pedalear.
+Si la pendiente disminuye Juan intentará subir el cambio para poder ir
+más rápido.
+% Si el cambio es muy bajo para la pendiente, es demasiado liviano y debe
+% pedalear muy rápido, y si es muy alto, debe hacer mucho esfuerzo para que la
+% bicicleta se mueva.
 
-Para evitar lidiar con este problema, Juan ha conseguido un dispositivo que
-puede los cambios automáticamente según la velocidad de la bicicleta.
-Desafortunadamente, este sistema solo considera la velocidad de la bicicleta y
-no toma en cuenta la pendiente del terreno.
-Esto es inútil para Juan pues siempre pedalea a la misma velocidad y quiere que
-su esfuerzo se mantenga en cierto rango.
-Para ajustarlo a sus necesidades, Juan ha modificado el dispositivo para
-considerar la pendiente.
-Sin embargo, el dispositivo tiene una memoria limitada, y solo puede almacenar
-una pendiente por cambio, además de un programa computacional.
+Después de estudiar detenidamente el camino, Juan ha determinado con qué cambio
+se siente cómodo para distintas pendientes.
+Específicamente, Juan tiene una lista de enteros en orden descendente, donde el
+$i$-ésimo entero indica la pendiente a partir de la cual este cambio es
+suficientemente agradable.
+Por ejemplo, si la bicicleta tiene 3 cambios y la lista es $(20, 15, 10)$,
+significa que Juan se siente cómodo con el primer cambio con una pendiente de
+20 o menor, se siente cómodo con el segundo con una pendiente de 15 o
+menor y se siente cómodo con el tercero con una pendiente de 10 o menor.
 
-Este programa debe determinar, a partir de las pendientes asociadas a cada
-cambio, cuál es el mejor cambio a usar dada la pendiente del terreno actual.
-Juan Paul ya determinó para cada cambio cuál es la máxima pendiente tal que el
-esfuerzo que debe realizar es aceptable
-También puede escribir el programa pero tanta experimentación con su bicicleta
-lo ha atrasado con un informe de avances de investigación que debe terminar en
-4 horas.
-¿Puedes escribir el programa antes de que Juan termine su informe?
+Naturalmente Juan desea ir lo más rápido posible, así que en caso de sentirse
+cómodo con más de un cambio ocupará el más alto.
+Por ejemplo, dada la lista anterior, con una pendiente de 16 Juan se siente cómodo
+tanto con el primer cambio como con el segundo, pero preferirá el segundo por
+ser el más alto.
+
+% Para evitar lidiar con este problema, Juan ha conseguido un dispositivo que
+% puede los cambios automáticamente según la velocidad de la bicicleta.
+% Desafortunadamente, este sistema solo considera la velocidad de la bicicleta y
+% no toma en cuenta la pendiente del terreno.
+% Esto es inútil para Juan pues siempre pedalea a la misma velocidad y quiere que
+% su esfuerzo se mantenga en cierto rango.
+% Para ajustarlo a sus necesidades, Juan ha modificado el dispositivo para
+% considerar la pendiente.
+% Sin embargo, el dispositivo tiene una memoria limitada, y solo puede almacenar
+% una pendiente por cambio, además de un programa computacional.
+Para evitar lidiar con el problema de pasar los cambios manualmente, Juan ha
+comprado una bicicleta inteligente que puede ser programada para actuar
+automáticamente a las diferencias de pendiente.
+La bicicleta es muy precisa y puedes ser programada para pasar instantáneamente
+a cualquiera de sus cambios.
+
+Para usar la bicicleta es necesario implementar un programa que determine cuál
+es el cambio ideal dada una pendiente.
+Juan Paul no es muy hábil programando, ¿podrías ayudarlo a implementar el
+programa necesario para usar la bicicleta?.
+
+% Este programa debe determinar, a partir de las pendientes asociadas a cada
+% cambio, cuál es el mejor cambio a usar dada la pendiente del terreno actual.
+% Juan Paul ya determinó para cada cambio cuál es la máxima pendiente tal que el
+% esfuerzo que debe realizar es aceptable
+% También puede escribir el programa pero tanta experimentación con su bicicleta
+% lo ha atrasado con un informe de avances de investigación que debe terminar en
+% 4 horas.
+% ¿Puedes escribir el programa antes de que Juan termine su informe?
 \end{problemDescription}
 
 \begin{inputDescription}
 La entrada consiste en tres líneas.
 
-La primera línea contiene dos enteros $N$ y $F$, que son respectivamente el
-número de cambios que tiene la bicicleta de Juan y el número de consultas que
-el programa debe responder por segundo.
+La primera línea contiene dos enteros $N$ y $F$, correspondientes
+respectivamente al número de cambios que tiene la bicicleta y a la cantidad
+de consultas que el programa debe responder.
 
-La siguiente línea contiene $N$ enteros $g_i$ en orden descendente, donde el
-$g$-ésimo entero indica la pendiente a partir de la cual este cambio es
-suficientemente agradable para Juan.
-Por ejemplo, si el quinto (5\textsuperscript{to}) número es 20 y el sexto
-(6\textsuperscript{to}) es 16, entonces Juan puede usar el quinto cambio si la
-pendiente es 20 o menor y el sexto si la pendiente es 16 o menor.
-Naturalmente, Juan quiere que la bicicleta vaya más rápido por lo que si puede
-usar dos cambios, usará el mayor (el 6\textsuperscript{to} en este caso).
+La siguiente línea contiene $N$ enteros $g_1,g_2,\ldots, g_N$ ($-10^5\leq
+g_i\leq 10^5$) donde el $i$-ésimo entero indica la pendiente a partir de la cual
+este cambio es suficientemente agradable.
 
-La última línea contiene $F$ enteros $m_j$, donde $m_j$ indica la pendiente del
-terreno en un instante dado.
-Puedes asumir que al menos el primer cambio es suficientemente agradable para
+La última línea contiene $F$ enteros $m_j$ ($-10^5\leq m_i\leq 10^5$), donde
+$m_j$ indica la pendiente del terreno en un instante dado.
+Se garantiza que al menos el primer cambio es suficientemente agradable para
 Juan en todo instante.
 \end{inputDescription}
 
 \begin{outputDescription}
-La salida consiste en $F$ líneas.
-La $j$-ésima línea contiene un solo entero $i_j$, que corresponde al cambio ideal
+La salida debe consistir en $F$ líneas.
+La $j$-ésima línea debe contener un solo entero correspondiente al cambio ideal
 para la pendiente $m_j$.
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{10} 2 cambios y 1000 queries
-  \score{10} 100000 cambios y 1000 queries
-  \score{10} 100000 cambios y 1000000 queries
+  \score{16} Se probarán varios casos con $N=2$ y $F\leq 1\,000$.
+  \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $F\leq 1\,000$.
+  \score{46} Se probarán varios casos con $1\,000< N \leq 10\,000$ y $1\,000 <
+  F\leq 10\,000$.
 \end{scoreDescription}
 
 \begin{sampleDescription}
