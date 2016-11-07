@@ -8,10 +8,10 @@ N = int(sys.argv[1])
 attacker = []
 defender = []
 for i in range(N):
-    dice = random.randint(1, 6)
-    attacker.append(dice)
-    dice = random.randint(1, 6)
-    defender.append(dice)
+    attacker.append(random.randint(1, 6))
+    defender.append(random.randint(1, 6))
+sorted(attacker)
+sorted(defender)
 print(N)
-print(' '.join(str(d) for d in attacker))
-print(' '.join(str(d) for d in defender))
+for i in range(N):
+    print(attacker[i], defender[i])
