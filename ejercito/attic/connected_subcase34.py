@@ -3,13 +3,25 @@ import random
 
 random.seed(" ".join(sys.argv).__hash__())
 
+#Lectura de parametros
 N=int(sys.argv[1])
-E=int(sys.argv[2])
+T=int(sys.argv[2])
 K=int(sys.argv[3])
-T=int(sys.argv[4])
+A=int(sys.argv[4])
 
-print(N,E,K,T)
+#Primera linea del input
+print(N,T,K)
 
+#Segunda linea con T numeros
+starts=list(range(1,N+1))
+random.shuffle(starts)
+starts=starts[0:T]
+print(*starts)
+
+#Tercera linea con la cantidad de aristas
+print(A)
+
+#Construccion de las A aristas
 hs=set()
 edges=[]
 for i in range(2,N+1):
@@ -34,7 +46,7 @@ for i in range(1,N+1):
 random.shuffle(edges2)
 
 for x in edges2:
-	if len(edges)==E:
+	if len(edges)==A:
 			break
 	if hs.isdisjoint({(min(x[0],x[1]),max(x[0],x[1]))}):
 		edges.append(x)
@@ -42,10 +54,8 @@ for x in edges2:
 
 random.shuffle(edges)
 
-for i in range(E):
+#Imprimir las A aristas
+for i in range(A):
 	print(edges[i][0],edges[i][1])
 
-starts=list(range(1,N+1))
-random.shuffle(starts)
-starts=starts[0:T]
-print(*starts)
+
