@@ -12,25 +12,27 @@
 #include <algorithm>
 using namespace std;
 
-int main () {
-  int N, M;
-  scanf("%d%d", &N, &M);
+int main() {
+  int N, F;
+  scanf("%d%d", &N, &F);
 
-  vector<int> first(N);
+  vector<int> slopes(N);
   for (int i = 0; i < N; ++i)
-    scanf("%d", &first[i]);
+    scanf("%d", &slopes[i]);
 
-  vector<int> second(N);
-  for (int i = 0; i < M; ++i)
-    scanf("%d", &second[i]);
+  for (int i = 0; i < F; ++i) {
+    int slope;
+    scanf("%d", &slope);
 
-  int P = 0;
-  int i = 0;
-  while (i < min(N, M) and first[i] == second[i]) ++P, ++i;
+    int l = 0, r = N;
+    while (l < r) {
+      int m = (l + r)/2;
+      if (slope > slopes[m])
+        r = m;
+      else
+        l = m + 1;
+    }
 
-  int S = 0;
-  i = 0;
-  while (i < min(N, M) and first[N - i - 1] == second[M - i - 1]) ++S, ++i;
-
-  printf("%d\n", M - min(N, min(M, P + S)));
+    printf("%d\n", l);
+  }
 }
