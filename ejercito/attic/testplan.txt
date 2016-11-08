@@ -13,15 +13,6 @@
 # To generate test cases using test plan use `ocimatic gen-input`
 
 
-# [Subtask 1]
-  # Random tests - parameters: N (T=1) K=1 (A=N-1)
-#  1 ; chain.py 2 1
-#  1 ; chain.py 200 1
-#  1 ; chain.py 400 1
-#  1 ; chain.py 600 1
-#  1 ; chain.py 800 1
-#  1 ; chain.py 1000 1
-
 [Subtask 1]
 
   # Dense - parameters: N T=1 K=1 A

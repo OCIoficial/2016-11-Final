@@ -4,32 +4,29 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import java.util.Scanner;
 
-public class Main4 {
+public class jpaulsen_scanner {
 	static int n,t,k,a;
 	static int[] starts;
 	static ArrayList<Integer>[] graph;
 	public static void main(String[] args) throws IOException {
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		st=new StringTokenizer(br.readLine());
-		n=Integer.parseInt(st.nextToken());
-		t=Integer.parseInt(st.nextToken());
-		k=Integer.parseInt(st.nextToken());
+    Scanner in = new Scanner(System.in);
+		n=in.nextInt();
+		t=in.nextInt();
+		k=in.nextInt();
 		starts=new int[t];
-		st=new StringTokenizer(br.readLine());
 		for (int i = 0; i < t; i++) {
-			starts[i]=Integer.parseInt(st.nextToken())-1;
+			starts[i]=in.nextInt()-1;
 		}
 		graph=new ArrayList[n];
 		for (int i = 0; i < n; i++) {
 			graph[i]=new ArrayList<Integer>();
 		}
-		a=Integer.parseInt(br.readLine());
+		a=in.nextInt();
 		while(a-->0){
-			st=new StringTokenizer(br.readLine());
-			int u=Integer.parseInt(st.nextToken())-1;
-			int v=Integer.parseInt(st.nextToken())-1;
+			int u=in.nextInt()-1;
+			int v=in.nextInt()-1;
 			graph[u].add(v);
 			graph[v].add(u);
 		}
