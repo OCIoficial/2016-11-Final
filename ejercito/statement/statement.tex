@@ -36,20 +36,21 @@
   y esto se representa poniendo %una o más 
   fichas del color de ese jugador sobre el territorio. 
   En cada turno un jugador puede decidir atacar los territorios enemigos.
-  Para realizar un ataque un jugador debe escoger uno de sus territorios y
+  Para realizar un ataque, un jugador debe escoger uno de sus territorios y
   atacar algún territorio adyacente a él.
   Si el ataque es exitoso, el jugador atacante elimina todas las fichas enemigas
   del territorio y coloca las suyas en este nuevo territorio conquistado.
   Una vez que un territorio es conquistado el jugador debe esperar al siguiente
   turno para poder atacar desde él.
-  No obstante, en el mismo turno puede seguir atacando desde los territorios que ya poseía.
+  No obstante, en el mismo turno puede seguir atacando desde los territorios que
+  ya controlaba.
 
   Terry está obsesionada con el Risk y pasa tardes enteras analizando
-  nuevas estrategias y también nuevas reglas.
+  nuevas estrategias e inventando nuevas reglas.
   En este momento está preocupada de saber cuántos territorios podría
   conquistar si pudiera jugar $K$ turnos seguidos.
-  Para eso supone que no tiene oponentes y que comienza el juego con una cantidad $T$ de territorios
-  que ya le pertenecen.
+  Para eso supone que no tiene oponentes y que comienza el juego controlando una
+  cantidad $T$ de territorios.
   En su primer turno Terry puede conquistar todos los territorios adyacentes a
   los territorios iniciales.
   En su segundo turno puede atacar desde los territorios conquistados en
@@ -67,7 +68,7 @@
 %\input{mapa.pspdftex}
 %\end{center}
 Por ejemplo, la siguiente figura muestra dos turnos seguidos de Terry en un tablero con $9$ territorios
-suponiendo que Terry comienza sólo con el territorio $1$.
+suponiendo que Terry comienza controlando sólo el territorio $1$.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \ \ \ \  \scalebox{0.9}{\input{mapa1-1.pspdftex}} \ \ \ \  & \ \ \ \  \scalebox{0.9}{\input{mapa1-2.pspdftex}} \ \ \ \  & \ \ \ \  \scalebox{0.9}{\input{mapa1-3.pspdftex}} \ \ \ \  \\
@@ -76,15 +77,16 @@ Posición inicial & Después del primer turno & Después del segundo turno
 
 {\bf Figura 1}: Ejemplo de juego en 2 turnos desde un territorio inicial.
 \end{center}
-En el ejemplo, inicialmente Terry solo tiene el territorio $1$. En su primer turno Terry puede conquistar tanto
+% En el ejemplo, inicialmente Terry solo tiene el territorio $1$.
+En su primer turno Terry puede conquistar tanto
 el territorio $2$ como el territorio $3$ dado que ambos son adyacentes a $1$, por lo que luego
-de su primer turno Terry ya cuenta con los territorios $1$, $2$ y $3$. 
+de su primer turno Terry controla los territorios $1$, $2$ y $3$. 
 En su segundo turno puede conquistar los territorios $4$ y $5$, que son adyacentes al territorio $2$,
 y el territorio $6$, que es adyacente al territorio $3$. Entonces, luego de dos turnos
 Terry puede conquistar un total de $6$ territorios. 
 %(Este caso corresponde al tercer ejemplo de entrada de más abajo.)
 
-El siguiente ejemplo muestra dos turnos del juego de Terry si comienza con los territorios $5$, $7$ y $8$.
+El siguiente ejemplo muestra dos turnos del juego de Terry si comienza controlando los territorios $5$, $7$ y $8$.
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \ \ \ \  \scalebox{0.9}{\input{mapa2-1.pspdftex}} \ \ \ \  & \ \ \ \  \scalebox{0.9}{\input{mapa2-2.pspdftex}} \ \ \ \  & \ \ \ \  \scalebox{0.9}{\input{mapa2-3.pspdftex}} \ \ \ \  \\
@@ -96,7 +98,7 @@ Posición inicial & Después del primer turno & Después del segundo turno
 En este caso, en dos turnos Terry puede conquistar los $9$ territorios del mapa.
 %(Este caso corresponde al cuarto ejemplo de entrada de más abajo.)
 
-Dada una descripción del mapa y los territorios que Terry tiene inicialmente, tu tarea
+Dada una descripción del mapa y los territorios que Terry controla inicialmente, tu tarea
 es construir un programa que determine cuántos territorios puede conquistar Terry si juega $K$ turnos seguidos.
 \end{problemDescription}
 
@@ -105,10 +107,10 @@ es construir un programa que determine cuántos territorios puede conquistar Ter
 %
   La primera línea contiene tres números enteros $N$, $T$ y $K$ donde
   $N$ es el número total de territorios en el tablero,
-	$T$ es la cantidad de territorios que Terry tiene inicialmente, y
+	$T$ es la cantidad de territorios que Terry controla inicialmente, y
 	$K$ es la cantidad de turnos seguidos que Terry quiere jugar.
-	La segunda línea contiene $T$ enteros que indican cuáles son los territorios iniciales
-	de Terry.
+	La segunda línea contiene $T$ enteros que indican cuáles son los territorios
+  que Terry controla inicialmente.
 	
 	Después de esas líneas vienen varias líneas que describen el tablero.
 	La primera de estas líneas contiene un entero $A$ que indica la cantidad de 
@@ -116,9 +118,10 @@ es construir un programa que determine cuántos territorios puede conquistar Ter
 	Las siguientes $A$ líneas contienen cada una un par de enteros distintos $u$ y $v$
 	que indican que el territorio $u$ y el territorio $v$ son adyacentes.
 	
-	Se asegura que siempre se cumple con:
+	% Se asegura que siempre se cumple con:
+  Se garantiza que siempre se cumplirán las siguientes restricciones:
 	\begin{itemize}
-	\item $1 \le N \le 1\,000$, \ $1 \le T\le N$, \ $1 \le K\le 999$,\  $1 \le A \le 10\,000$.
+	\item $2 \le N \le 1\,000$, \ $1 \le T\le N$, \ $1 \le K\le 999$,\  $1 \le A \le 10\,000$.
 	\end{itemize}
 
   Abajo se muestran varios ejemplos de entradas posibles. El tercer ejemplo corresponde al
@@ -159,17 +162,19 @@ es construir un programa que determine cuántos territorios puede conquistar Ter
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{15} Se probarán varios casos donde $T=1$ (solo un territorio inicial), $K=1$ (solo un turno), y los 
-  territorios forman una línea en donde el territorio $1$ es adyacente al territorio $2$, 
-  el territorio $2$ es adyacente al territorio $3$, y así hasta el territorio $N$.
-  El primer ejemplo abajo cumple estas condiciones.
+  \score{15} Se probarán varios casos donde $T=1$ (solo un territorio inicial) y
+  $K=1$ (solo un turno).
+  % y los 
 %  están dispuestos en una cadena, es decir, el territorio $i$
 %  es adyacente solo con el territorio $i-1$ y el $i+1$, salvo el primer
 %  territorio que solo es adyacente con el segundo y el último que solo es
 %  adyacente con el penúltimo 
-  \score{20} Se probarán varios casos donde $T=1$ y los territorios forman una línea.
-  A diferencia del caso anterior $K$ puede ser mayor a $1$.
+  \score{20} Se probarán varios casos donde $T=1$ y los territorios forman una
+  línea, en donde el territorio $1$ es adyacente al territorio $2$, el
+  territorio $2$ es adyacente al territorio $3$, y así hasta el territorio $N$.
   El segundo ejemplo abajo cumple estas condiciones.
+  % A diferencia del caso anterior $K$ puede ser mayor a $1$.
+  % El segundo ejemplo abajo cumple estas condiciones.
 %  \score{30} Se probarán varios casos donde $T=1$, $K=1$, y además los
 %  territorios están dispuestos en una cadena, es decir, el territorio $i$
 %  es adyacente solo con el territorio $i-1$ y el $i+1$, salvo el primer
