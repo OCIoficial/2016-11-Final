@@ -8,15 +8,13 @@ N = int(sys.argv[1])
 T = 1
 K = int(sys.argv[2])
 A = N-1
+S = int(sys.argv[3])
 
 # Primera linea del input
 print(N, T, K)
 
 # Segunda linea con T numeros
-starts = list(range(1, N+1))
-random.shuffle(starts)
-starts = starts[0:T]
-print(*starts)
+print(S)
 
 # Tercera linea con la cantidad de aristas
 print(A)

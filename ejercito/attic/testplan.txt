@@ -24,64 +24,47 @@
 
 [Subtask 1]
 
-  # Random graph - parameters: N T=1 K A
-  1 ; gen-random.py 1000 1 1 5000
-  1 ; gen-random.py 1000 1 1 2000
+  # Dense - parameters: N T=1 K=1 A
+  1 ; gen-random.py 10 1 1 45
+  1 ; gen-random.py 100 1 1 4950
+  1 ; gen-random.py 1000 1 1 10000
 
-  # Connected graph - parameters: N T=1 K=1 A
-  2 ; connected.py 10 1 1 20
-  2 ; connected.py 100 1 1 200
-  2 ; connected.py 1000 1 1 10000
-  2 ; connected.py 1000 1 1 1000
+  # Sparse
+  2 ; gen-random.py 10 1 1 20
+  2 ; gen-random.py 100 1 1 200
+  2 ; gen-random.py 1000 1 1 2000
+
 
 [Subtask 2]
+  # Border case
+  1 ; chain.py 2 10 1
 
-  # Chain - parameters: N (T=1) K (A=N-1)
-  2 ; chain.py 2 2
-  2 ; chain.py 2 4
-  2 ; chain.py 200 10
-  2 ; chain.py 200 200
-  2 ; chain.py 400 20
-  2 ; chain.py 400 150
-  2 ; chain.py 1000 100
-  2 ; chain.py 1000 1000
+  # Start in Edges
+  2 ; chain.py 200 10 1
+  2 ; chain.py 200 10 2
+  2 ; chain.py 200 20 200
+  2 ; chain.py 200 20 197
+
+  # Start in Center
+  3 ; chain.py 10 10 5
+  3 ; chain.py 10 5 5
+  3 ; chain.py 100 10 50
+  3 ; chain.py 100 10 50
 
 [Subtask 3]
 
-  # Random tests - parameters: N T=1 K A
-  1 ; gen-random.py 200 1 10 5000
-  1 ; gen-random.py 200 1 40 1000
-  1 ; gen-random.py 400 1 20 1000
-  1 ; gen-random.py 400 1 150 5000
-  1 ; gen-random.py 600 1 650 8000
-  1 ; gen-random.py 800 1 100 10000
-  1 ; gen-random.py 1000 1 1000 10000
-
   # Connected graph tests - parameters: N T=1 K A
-  2 ; connected.py 2 1 2 1
-  2 ; connected.py 2 1 4 1
-  2 ; connected.py 200 1 10 5000
-  2 ; connected.py 200 1 40 1000
-  2 ; connected.py 400 1 20 1000
-  2 ; connected.py 400 1 150 5000
-  2 ; connected.py 600 1 650 8000
-  2 ; connected.py 800 1 100 10000
-  2 ; connected.py 1000 1 1000 10000
+  1 ; connected.py 200 1 10 5000
+  1 ; connected.py 200 1 40 1000
+  1 ; connected.py 400 1 20 1000
+  1 ; connected.py 400 1 150 5000
+  1 ; connected.py 600 1 650 8000
+  1 ; connected.py 800 1 100 10000
+  1 ; connected.py 1000 1 1000 10000
 
 [Subtask 4]
 
-  # Random tests - parameters: N T K A
-  1 ; gen-random.py 200 5 10 5000
-  1 ; gen-random.py 200 8 40 1000
-  1 ; gen-random.py 400 10 20 1000
-  1 ; gen-random.py 400 15 150 5000
-  1 ; gen-random.py 600 20 650 100
-  1 ; gen-random.py 800 100 100 800
-  1 ; gen-random.py 1000 50 1000 10000
-
   # Connected graph tests - parameters: N T K A
-  2 ; connected.py 2 1 2 1
-  2 ; connected.py 2 1 4 1
   2 ; connected.py 200 1 10 5000
   2 ; connected.py 200 1 40 1000
   2 ; connected.py 400 18 20 1000
