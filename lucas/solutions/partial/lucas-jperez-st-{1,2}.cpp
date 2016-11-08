@@ -9,6 +9,6 @@ int main(){
 
 	if(N>M) cout << 0 << endl;
 	else cout << M-N << endl;
-	
+
 	return 0;
 }

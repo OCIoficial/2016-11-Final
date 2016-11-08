@@ -7,12 +7,11 @@
  * -----------------------------------------------------------------------------
  */
 
-#include <vector>
 #include <cstdio>
-#include <algorithm>
+#include <vector>
 using namespace std;
 
-int main () {
+int main() {
   int N, M;
   scanf("%d%d", &N, &M);
 
@@ -21,16 +20,18 @@ int main () {
     scanf("%d", &first[i]);
 
   vector<int> second(N);
-  for (int i = 0; i < M; ++i)
+  for (int i = 0; i < N; ++i)
     scanf("%d", &second[i]);
 
-  int P = 0;
   int i = 0;
-  while (i < min(N, M) and first[i] == second[i]) ++P, ++i;
+  int P = 0;
+  while (i < N and first[i] == second[i])
+    P++, i++;
 
   int S = 0;
-  i = 0;
-  while (i < min(N, M) and first[N - i - 1] == second[M - i - 1]) ++S, ++i;
+  i = N-1;
+  while (i >= 0 and first[i] == second[i])
+    S++, i--;
 
-  printf("%d\n", M - min(N, min(M, P + S)));
+  printf("%d\n", N - min(N, P + S));
 }
