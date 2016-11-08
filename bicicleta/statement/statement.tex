@@ -37,12 +37,12 @@ disfrutar de paseos en bicicleta.
 Todo el camino que debe recorrer Juan Paul es en subida y cambia continuamente
 de pendiente por lo que debe pasar constantemente los cambios de su bicicleta para sentirse
 cómodo al pedalear. 
-Un cambio más bajo implica un menor esfuerzo para enfrentar una pendiente pronunciada, 
+Un cambio más bajo implica un menor esfuerzo para subir una pendiente pronunciada, 
 pero también implica que va más lento.
-Por el contrario, un cambio más alto le permite ir a más velocidad pero no enfrentar
+Por el contrario, un cambio más alto le permite ir a más velocidad pero no subir
 pendientes muy pronunciadas. 
-A Juan Paul le gustaría saber cuál es el mejor cambio a utilizar para cada pendiente
-en su camino.
+%A Juan Paul le gustaría saber cuál es el mejor cambio a utilizar para cada pendiente
+%en su camino.
 
 
 %Si la pendiente aumenta mucho debe poner un cambio mas bajo
@@ -58,39 +58,51 @@ en su camino.
 %20 o menor, se siente cómodo con el segundo con una pendiente de 15 o
 %menor y se siente cómodo con el tercero con una pendiente de 10 o menor.
 
-Cada día Juan Paul construye una lista indicando hasta qué pendiente 
-máxima está dispuesto a enfrentar con cada cambio. 
+Cada día, y dependiendo de su ánimo y energía, Juan Paul construye una lista indicando hasta qué pendiente 
+máxima está dispuesto a 
+%enfrentar 
+subir 
+con cada cambio. 
 La lista es una secuencia de números entre $0$ (que representa $0$ grados) 
 y $90\,000$ (que representa $90$ grados), ordenados de mayor a menor. El primero de estos números 
-indica la pendiente máxima que puede enfrentar con el cambio $1$, el segundo la pendiente máxima que
-puede enfrentar con el cambio $2$, y así sucesivamente.
+indica la pendiente máxima que puede 
+%enfrentar 
+subir
+con el cambio $1$, el segundo la pendiente máxima que puede 
+%enfrentar 
+subir
+con el cambio $2$, y así sucesivamente.
 Por ejemplo, si Juan Paul construye la lista
 \[
 43\, 000\;\;\;\;\; 35\, 000\;\;\;\;\; 15\, 000\;\;\;\;\; 5\, 000
 \]
-eso quiere decir que con el cambio $1$ puede enfrentar hasta una pendiente de $43000$, con el 
-cambio $2$ puede enfrentar hasta una pendiente de $35000$, con el cambio $3$ hasta una pendiente de
-$15000$ y con el cambio $4$ hasta una pendiente de $5000$.
+entonces con el cambio $1$ puede subir pendientes de $43000$ o menos, con el 
+$2$ puede subir pendientes de $35000$ o menos, con el $3$ pendientes de
+$15000$ o menos, y con el $4$ pendientes de $5000$ o menos.
+%eso quiere decir que con el cambio $1$ puede enfrentar hasta una pendiente de $43000$, con el 
+%cambio $2$ puede enfrentar hasta una pendiente de $35000$, con el cambio $3$ hasta una pendiente de
+%$15000$ y con el cambio $4$ hasta una pendiente de $5000$.
 
 Naturalmente, Juan Paul quiere ir lo más rápido posible por lo que 
-siempre usará el cambio más alto que le permite enfrentar
+siempre usará el cambio más alto que le permite subir
 una pendiente en su camino.
 Por ejemplo, considere el camino dado por la siguiente figura, en donde se han marcado
-cada una de las pendientes.\\
+cada una de las pendientes.
+\begin{center}
+\input{pendiente.pspdftex}
+\end{center}
 
-\vspace*{100pt}
-
-En este caso, para el primer tramo $P_1$ de pendiente $3000$, Juan Paul puede usar el cambio $4$, 
+En este caso, para el primer tramo de pendiente $p_1=3000$, Juan Paul puede usar el cambio $4$, 
 el más rápido.
-Por el contrario, para el segundo tramo $P_2=42 000$, necesita usar el cambio $1$, el más bajo. 
-Y así sucesivamente, para el tramo $P_3=15 000$ debe usar el cambio $3$, para el tramo $P_4=42 000$
-debe usar el cambio $1$, para el tramo $P_5=0$ debe usar el cambio $4$ y para el tramo $P_6=25 000$ debe usar
+Por el contrario, para el segundo tramo $p_2=43 000$, necesita usar el cambio $1$, el más bajo. 
+Y así sucesivamente, para el tramo $p_3=15 000$ debe usar el cambio $3$, para el tramo $p_4=42 000$
+debe usar el cambio $1$, para $p_5=0$ debe usar el cambio $4$ y para $p_6=25 000$ debe usar
 el cambio $2$.
 
 Juan ha comprado una bicicleta inteligente que puede ser programada para 
 pasar instantáneamente a cualquiera de sus cambios. 
 Para usar la bicicleta Juan necesita implementar un programa que, dada
-la lista que indica hasta qué pendiente máxima Juan puede enfrentar con cada cambio,
+la lista que indica hasta qué pendiente máxima puede subir con cada cambio,
 y dada una descripción del camino que debe subir,
 el programa determine cuál es el cambio que se debe usar en cada tramo del camino.
 %es el cambio ideal dada una pendiente y las preferencias de Juan.
@@ -144,11 +156,11 @@ al número de cambios que tiene la bicicleta y $T$ a la cantidad
 de tramos que tiene el camino.
 
 La siguiente línea contiene $N$ enteros $g_1,g_2,\ldots, g_N$, todos entre $0$ y $90\,000$, 
-donde $g_1$ indica la pendiente máxima que Juan Paul puede enfrentar con el cambio $1$,
-$g_2$ la pendiente máxima que puede enfrentar con el cambio $2$, etc.
+donde $g_1$ indica la pendiente máxima que Juan Paul puede subir con el cambio $1$,
+$g_2$ la pendiente máxima que puede subir con el cambio $2$, etc.
 
 La tercera línea contiene $T$ enteros $p_1,p_2,\ldots,p_T$, todos entre $0$ y $90\,000$, 
-donde $p_1$ es la pendiente del tramo $1$ del camino que se debe subir, $p_2$ es la pendiente
+donde $p_1$ es la pendiente del tramo $1$ del camino, $p_2$ es la pendiente
 del tramo $2$, etc.
 Se garantiza que todas estas pendientes son menores o iguales a $g_1$ (y por lo tanto Juan Paul
 puede recorrer el camino completo).
@@ -160,7 +172,7 @@ puede recorrer el camino completo).
 \begin{outputDescription}
 La salida debe consistir en $T$ líneas.
 La línea $1$ debe contener un solo entero correspondiente al cambio que se debe usar para la pendiente $p_1$,
-la línea $2$ el cambio que se debe usar para la pendiente $p_2$, la línea $3$ el cambio que se debe usar 
+la línea $2$ el cambio que se debe usar para la pendiente $p_2$, la línea $3$ el que se debe usar 
 para la pendiente $p_3$, y así sucesivamente hasta completar las $T$ pendientes.
 \end{outputDescription}
 
