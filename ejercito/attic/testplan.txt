@@ -14,23 +14,59 @@
 
 
 [Subtask 1]
-  # Use sample data as test
-  1 ; copy documents/sample-1.in
-  1 ; copy documents/sample-2.in
 
-  # Manual test case
-  2 ; copy attic/manual-1.in
+  # Random tests parameters: N E K=1 T=1
+  1 ; random_subcase134.py 1000 10000 1 1
+  1 ; random_subcase134.py 2 1 1 1
+  1 ; random_subcase134.py 100 4950 1 1
+  1 ; random_subcase134.py 100 500 1 1
+  1 ; random_subcase134.py 800 500 1 1
 
-  # Random tests
-  3 ; random.cpp 10 100
-  3 ; random.cpp 100 1000
+  # Connected graph tests N E K=1 T=1
+  1 ; connected_subcase134.py 1000 2000 1 1
+  1 ; connected_subcase134.py 500 1000 1 1
+  1 ; connected_subcase134.py 250 800 1 1
+  1 ; connected_subcase134.py 15 30 1 1
+  1 ; connected_subcase134.py 500 10000 1 1
 
 
 [Subtask 2]
-  # Random tests
-  1 ; random.java 10 20 30
-  1 ; random.java 20 30 40
 
-  # More random tests
-  2 ; random.py 1 1000
+  # Random tests parameters: N K (E=N T=1)
+  1 ; random_subcase2.py 1000 1
+  1 ; random_subcase2.py 1000 1000
+  1 ; random_subcase2.py 1000 50
+  1 ; random_subcase2.py 2 1
+  1 ; random_subcase2.py 2 50
 
+[Subtask 3]
+
+  # Random tests N E K T=1
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+
+  # Connected graph tests N E K T=1
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+
+  [Subtask 4]
+
+  # Random tests N E K T
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+  1 ; random_subcase134.py
+
+  # Connected graph tests N E K T
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py
+  1 ; connected_subcase134.py

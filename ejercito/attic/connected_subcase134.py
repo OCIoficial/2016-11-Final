@@ -6,13 +6,14 @@ random.seed(" ".join(sys.argv).__hash__())
 N=int(sys.argv[1])
 E=int(sys.argv[2])
 K=int(sys.argv[3])
+T=int(sys.argv[4])
 
-print(N,E,K,1)
+print(N,E,K,T)
 
 hs=set()
 edges=[]
 for i in range(2,N+1):
-	j=random.randint(1,i);
+	j=random.randint(1,i-1)
 	o=random.randint(0,1)
 	if (o==0):
 		edges.append((i,j))
@@ -44,4 +45,7 @@ random.shuffle(edges)
 for i in range(E):
 	print(edges[i][0],edges[i][1])
 
-print(random.randint(1,N))
+starts=list(range(1,N+1))
+random.shuffle(starts)
+starts=starts[0:T]
+print(*starts)
