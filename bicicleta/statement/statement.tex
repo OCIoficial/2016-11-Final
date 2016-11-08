@@ -58,20 +58,20 @@ pendientes muy pronunciadas.
 %20 o menor, se siente cómodo con el segundo con una pendiente de 15 o
 %menor y se siente cómodo con el tercero con una pendiente de 10 o menor.
 
-Cada día, y dependiendo de su ánimo y energía, Juan Paul construye una lista indicando hasta qué pendiente 
-máxima está dispuesto a 
+Cada día, dependiendo de su ánimo y energía, Juan Paul construye una lista indicando la pendiente 
+máxima que está dispuesto a 
 %enfrentar 
-subir 
-con cada cambio. 
-La lista es una secuencia de números entre $0$ (que representa $0$ grados) 
-y $90\,000$ (que representa $90$ grados), ordenados de mayor a menor. El primero de estos números 
-indica la pendiente máxima que puede 
+subir con cada cambio. 
+% La lista es una secuencia de números entre $0$ (que representa $0$ grados) 
+% y $90\,000$ (que representa $90$ grados), ordenados de mayor a menor.
+Esta lista es una secuencia de números ordenada de mayor a menor, donde cada
+número está entre $0$ (que representa $0$ grados) y $90\,000$ (que representa
+$90$ grados).
+El primero de estos números indica la pendiente máxima que Juan Paul puede 
 %enfrentar 
-subir
-con el cambio $1$, el segundo la pendiente máxima que puede 
+subir con el cambio $1$, el segundo la pendiente máxima que puede 
 %enfrentar 
-subir
-con el cambio $2$, y así sucesivamente.
+subir con el cambio $2$, y así sucesivamente.
 Por ejemplo, si Juan Paul construye la lista
 \[
 43\, 000\;\;\;\;\; 35\, 000\;\;\;\;\; 15\, 000\;\;\;\;\; 5\, 000
@@ -155,9 +155,10 @@ La primera línea contiene dos enteros $N$ y $T$, donde $N$ corresponde
 al número de cambios que tiene la bicicleta y $T$ a la cantidad
 de tramos que tiene el camino.
 
-La siguiente línea contiene $N$ enteros $g_1,g_2,\ldots, g_N$, todos entre $0$ y $90\,000$, 
-donde $g_1$ indica la pendiente máxima que Juan Paul puede subir con el cambio $1$,
-$g_2$ la pendiente máxima que puede subir con el cambio $2$, etc.
+La siguiente línea contiene $N$ enteros $g_1,g_2,\ldots, g_N$ ordenados de mayor
+a menor, todos entre $0$ y $90\,000$, donde $g_1$ indica la pendiente máxima que
+Juan Paul puede subir con el cambio $1$, $g_2$ la pendiente máxima que puede
+subir con el cambio $2$, etc.
 
 La tercera línea contiene $T$ enteros $p_1,p_2,\ldots,p_T$, todos entre $0$ y $90\,000$, 
 donde $p_1$ es la pendiente del tramo $1$ del camino, $p_2$ es la pendiente
@@ -179,7 +180,7 @@ para la pendiente $p_3$, y así sucesivamente hasta completar las $T$ pendientes
 \begin{scoreDescription}
   \score{16} Se probarán varios casos con $N=2$ y $T\leq 100$.
   \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $T\leq 100$.
-  \score{46} Se probarán varios casos con $1\,000< N \leq 10\,000$ y $1\,000 <
+  \score{46} Se probarán varios casos con $1\,000< N \leq 10\,000$ y $100 <
   T\leq 10\,000$.
 \end{scoreDescription}
 
