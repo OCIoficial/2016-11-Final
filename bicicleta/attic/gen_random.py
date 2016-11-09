@@ -15,7 +15,7 @@ gears = sorted(permutation[0:N], reverse=True)
 
 queries = []
 for i in range(F):
-    queries.append(random.randint(-G_MAX, gears[0]))
+    queries.append(random.randint(0, gears[0]))
 
 print('%d %d' % (N, F))
 print(' '.join([str(g) for g in gears]))

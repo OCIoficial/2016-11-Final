@@ -13,7 +13,7 @@
 # To generate test cases using test plan use `ocimatic gen-input`
 
 
-[Subtask 1]
+[Subtask 1 - checkers/st1.cpp]
   # Use sample data as test
   1 ; copy statement/sample-1.in
 
@@ -26,7 +26,7 @@
   3 ; gen_random.py 2 100 100000
 
 
-[Subtask 2]
+[Subtask 2 - checkers/st2.cpp]
   # Use sample data as test
   1 ; copy statement/sample-2.in
 
@@ -42,7 +42,7 @@
   3 ; gen_random.py 1000 100 100000
 
 
-[Subtask 3]
+[Subtask 3 - checkers/st3.cpp]
   # Random tests
   1 ; gen_random.py 1024 1024 100000
   1 ; gen_random.py 2048 2048 100000

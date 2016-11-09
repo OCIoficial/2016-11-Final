@@ -29,7 +29,6 @@ for i in range(abs(M - N)):
 
 if N > M:
     (first, second) = (second, first)
-    (N, M) = (M, N)
 print(N, M)
 print(' '.join(str(i) for i in first))
 print(' '.join(str(i) for i in second))

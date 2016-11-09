@@ -13,14 +13,14 @@ int main()
     inf.readEoln();
 
     for(int i=0;i<T;i++){
-        int t = inf.readInt(1,N,"(territorios controlados inicialmente)");
+        int t = inf.readInt(1,N,"(territorio controlado inicialmente)");
         if(i!=T-1) inf.readSpace();
     }
     inf.readEoln();
-    
+
     int A = inf.readInt(1,10000,"A");
     inf.readEoln();
- 
+
     set<pair<int,int> > e;
 
     for(int i=0;i<A;i++){

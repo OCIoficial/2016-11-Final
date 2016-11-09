@@ -13,7 +13,7 @@
 # To generate test cases using test plan use `ocimatic gen-input`
 
 
-[Subtask 1]
+[Subtask 1 - checkers/st1.cpp]
 
   # Dense - parameters: N T=1 K=1 A
   1 ; gen-random.py 10 1 1 45
@@ -26,7 +26,7 @@
   2 ; gen-random.py 1000 1 1 2000
 
 
-[Subtask 2]
+[Subtask 2 - checkers/st2.cpp]
   # Border case
   1 ; chain.py 2 10 1
 
@@ -42,7 +42,7 @@
   3 ; chain.py 100 10 50
   3 ; chain.py 100 10 50
 
-[Subtask 3]
+[Subtask 3 - checkers/st3.cpp]
 
   # Connected graph tests - parameters: N T=1 K A
   1 ; connected.py 200 1 10 5000
@@ -51,17 +51,17 @@
   1 ; connected.py 400 1 150 5000
   1 ; connected.py 600 1 650 8000
   1 ; connected.py 800 1 100 10000
-  1 ; connected.py 1000 1 1000 10000
+  1 ; connected.py 1000 1 999 10000
 
-[Subtask 4]
+[Subtask 4 - checkers/st4.cpp]
 
   # Connected graph tests - parameters: N T K A
-  2 ; connected.py 200 1 10 5000
-  2 ; connected.py 200 1 40 1000
-  2 ; connected.py 400 18 20 1000
-  2 ; connected.py 400 100 150 5000
-  2 ; connected.py 600 10 650 2000
-  2 ; connected.py 800 100 100 10000
-  2 ; connected.py 1000 15 1000 100
-  2 ; connected.py 1000 15 1000 1
-  2 ; connected.py 1000 1000 1 1
+  1 ; connected.py 200 1 10 5000
+  1 ; connected.py 200 1 40 1000
+  1 ; connected.py 400 18 20 1000
+  1 ; connected.py 400 100 150 5000
+  1 ; connected.py 600 10 650 2000
+  1 ; connected.py 800 100 100 10000
+  1 ; connected.py 1000 15 999 100
+  1 ; connected.py 1000 15 999 1
+  1 ; connected.py 1000 1000 1 1
