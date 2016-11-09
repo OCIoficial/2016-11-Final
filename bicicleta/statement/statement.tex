@@ -155,8 +155,8 @@ programa necesario para usar la bicicleta?
 La entrada consiste en tres líneas.
 
 La primera línea contiene dos enteros $N$ y $T$, donde $N$ corresponde
-al número de cambios que tiene la bicicleta y $T$ a la cantidad
-de tramos que tiene el camino.
+al número de cambios que tiene la bicicleta ($N\geq 2$) y $T$ a la cantidad
+de tramos que tiene el camino ($T\geq 1$).
 
 La siguiente línea contiene $N$ enteros $g_1,g_2,\ldots, g_N$ ordenados de mayor
 a menor, todos entre $0$ y $90\,000$, donde $g_1$ indica la pendiente máxima que
@@ -181,8 +181,8 @@ para la pendiente $p_3$, y así sucesivamente hasta completar las $T$ pendientes
 \end{outputDescription}
 
 \begin{scoreDescription}
-  \score{16} Se probarán varios casos con $N=2$ y $T\leq 100$.
-  \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $T\leq 100$.
+  \score{16} Se probarán varios casos con $N=2$ y $1\leq T\leq 100$.
+  \score{38} Se probarán varios casos con $2 < N \leq 1\,000$ y $1\leq T\leq 100$.
   \score{46} Se probarán varios casos con $1\,000< N \leq 10\,000$ y $100 <
   T\leq 10\,000$.
 \end{scoreDescription}
