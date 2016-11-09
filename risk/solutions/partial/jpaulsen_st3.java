@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class jpaulsen {
+public class jpaulsen_st3 {
 	static int n,t,k,a;
 	static int[] starts;
 	static ArrayList<Integer>[] graph;
@@ -16,10 +16,11 @@ public class jpaulsen {
 		n=Integer.parseInt(st.nextToken());
 		t=Integer.parseInt(st.nextToken());
 		k=Integer.parseInt(st.nextToken());
-		starts=new int[t];
+		starts=new int[1];
 		st=new StringTokenizer(br.readLine());
-		for (int i = 0; i < t; i++) {
-			starts[i]=Integer.parseInt(st.nextToken())-1;
+		starts[0]=Integer.parseInt(st.nextToken())-1;
+		for (int i = 1; i < t; i++) {
+			int s=Integer.parseInt(st.nextToken())-1;
 		}
 		graph=new ArrayList[n];
 		for (int i = 0; i < n; i++) {
