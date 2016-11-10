@@ -44,14 +44,14 @@
 
 [Subtask 3 - checkers/st3.cpp]
   # Random tests
-  1 ; gen_random.py 2048 2048 90001
-  1 ; gen_random.py 4096 4096 90001
-  1 ; gen_random.py 16384 16384 90001
   1 ; gen_random.py 65536 65536 90001
-  2 ; gen_random.py 2048 2048 2048
-  2 ; gen_random.py 4096 4096 4096
-  2 ; gen_random.py 16384 16384 16384
-  2 ; gen_random.py 65536 65536 65536
+  1 ; gen_random.py 65536 65536 65536
+
+  2 ; gen_random.py  90000 100000 90000
+
   3 ; gen_least.py 80000 80000 90000
-  3 ; gen_most.py 80000 80000 90000
+  3 ; gen_least.py 90000 100000 90000
+
+  4 ; gen_most.py 80000 80000 90000
+  4 ; gen_most.py 90000 100000 90000
 

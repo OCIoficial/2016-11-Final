@@ -20,7 +20,7 @@ int main () {
   for (int i = 0; i < N; ++i)
     scanf("%d", &first[i]);
 
-  vector<int> second(N);
+  vector<int> second(M);
   for (int i = 0; i < M; ++i)
     scanf("%d", &second[i]);
 

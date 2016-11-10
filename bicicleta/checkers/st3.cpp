@@ -18,7 +18,7 @@ int main()
         if(i!=N-1) inf.readSpace();
     }
     inf.readEoln();
-    
+
     for(int i=0;i<T;i++){
         int p = inf.readInt(0,90000,"p");
         if(i!=T-1) inf.readSpace();

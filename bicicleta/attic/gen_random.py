@@ -8,7 +8,7 @@ N = int(sys.argv[1])
 F = int(sys.argv[2])
 G_MAX = int(sys.argv[3])
 
-permutation = list(range(90001))
+permutation = list(range(G_MAX))
 random.shuffle(permutation)
 
 gears = sorted(permutation[0:N], reverse=True)
