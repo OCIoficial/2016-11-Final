@@ -23,6 +23,14 @@ int main()
         if(i!=M-1) inf.readSpace();
     }
     inf.readEoln();
+
+    // chequea que ambas palabras sean distintas
+    if(N==M){
+        int i=0;                 
+        while(i<N && p1[i]==p2[i]) i++;                 
+        ensuref(i<N, "Las palabras deben ser distintas");
+    }
+    
     inf.readEof();
     return 0;
 }
