@@ -4,9 +4,9 @@ using namespace std;
 int main()
 {
     registerValidation();
-    int N = inf.readInt(1001,10000,"N");
+    int N = inf.readInt(1001,90000,"N");
     inf.readSpace();
-    int T = inf.readInt(101,10000,"T");
+    int T = inf.readInt(101,100000,"T");
     inf.readEoln();
 
     int ant = 90001;
