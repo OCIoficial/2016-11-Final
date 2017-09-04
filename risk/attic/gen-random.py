@@ -4,10 +4,10 @@ import random
 random.seed(" ".join(sys.argv).__hash__())
 
 #Lectura de parametros
-N=int(sys.argv[1])
-T=int(sys.argv[2])
-K=int(sys.argv[3])
-A=int(sys.argv[4])
+N=int(sys.argv[2])
+T=int(sys.argv[3])
+K=int(sys.argv[4])
+A=int(sys.argv[5])
 
 #Primera linea del input
 print(N,T,K)

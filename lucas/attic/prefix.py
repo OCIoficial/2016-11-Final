@@ -12,8 +12,8 @@ import random
 
 random.seed(' '.join(sys.argv).__hash__())
 
-N = int(sys.argv[1])
-M = int(sys.argv[2])
+N = int(sys.argv[2])
+M = int(sys.argv[3])
 
 if not 1 <= N <= 50 or not 1 <= M <= 50 or N == M:
     sys.exit(1)

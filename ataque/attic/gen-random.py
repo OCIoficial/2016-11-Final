@@ -4,7 +4,7 @@ import random
 
 random.seed(' '.join(sys.argv).__hash__())
 
-N = int(sys.argv[1])
+N = int(sys.argv[2])
 attacker = []
 defender = []
 for i in range(N):
